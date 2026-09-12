@@ -1,0 +1,618 @@
+/* ========================================================================
+   Story Director — classic/flat design system
+   Traditional bordered cards and controls that follow the active
+   SillyTavern theme's own colors, instead of a custom soft-UI skin.
+   ======================================================================== */
+
+.sd-popup {
+    --sd-surface: var(--SmartThemeBlurTintColor, #262b3a);
+    --sd-text: var(--SmartThemeBodyColor, #e6e6e6);
+    --sd-border: var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.35));
+    --sd-accent-1: #7a5fb0;
+    --sd-accent-2: #d8628a;
+    --sd-accent: linear-gradient(135deg, var(--sd-accent-1), var(--sd-accent-2));
+    --sd-radius-lg: 10px;
+    --sd-radius-md: 8px;
+    --sd-radius-sm: 5px;
+    --sd-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    text-align: left;
+    max-height: 76vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 6px 4px;
+    color: var(--sd-text);
+    scrollbar-width: thin;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Stepper / carousel navigation                                          */
+/* ---------------------------------------------------------------------- */
+
+.sd-stepper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sd-stepper-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: sticky;
+    top: 0;
+    z-index: 3;
+    background: var(--sd-surface);
+    border: 1px solid var(--sd-border);
+    border-radius: var(--sd-radius-md);
+    padding: 8px 8px;
+}
+
+.sd-stepper-arrow {
+    flex: 0 0 auto;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--sd-border);
+    background: transparent;
+    color: inherit;
+    font-size: 1.25em;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding: 0;
+    transition: background 0.15s ease, color 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+}
+
+.sd-stepper-arrow:hover:not(:disabled) {
+    background: var(--sd-accent-1);
+    color: #fff;
+    border-color: transparent;
+}
+
+.sd-stepper-arrow:active:not(:disabled) {
+    transform: scale(0.92);
+}
+
+.sd-stepper-arrow:disabled {
+    opacity: 0.35;
+    cursor: not-allowed;
+}
+
+.sd-stepper-title-wrap {
+    flex: 1 1 auto;
+    min-width: 0;
+    text-align: center;
+}
+
+.sd-stepper-title {
+    font-weight: 700;
+    font-size: 0.98em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sd-stepper-desc {
+    font-size: 0.72em;
+    opacity: 0.65;
+    margin-top: 2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.sd-stepper-track-viewport {
+    overflow: hidden;
+    position: relative;
+    touch-action: pan-y;
+}
+
+.sd-stepper-track {
+    display: flex;
+    align-items: flex-start;
+    transform: translateX(calc((-1 * var(--sd-step, 0)) * 100% + var(--sd-drag, 0px)));
+    transition: transform 0.4s var(--sd-ease);
+}
+
+.sd-stepper-track.sd-dragging {
+    transition: none;
+}
+
+.sd-step-panel {
+    flex: 0 0 100%;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 2px 3px 4px;
+}
+
+.sd-step-panel.sd-step-enter {
+    animation: sd-step-fade-up 0.32s var(--sd-ease);
+}
+
+@keyframes sd-step-fade-up {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.sd-stepper-dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 2px;
+}
+
+.sd-dot {
+    position: relative;
+    width: 9px;
+    height: 9px;
+    padding: 0;
+    border: none;
+    border-radius: 50%;
+    background: var(--sd-border);
+    cursor: pointer;
+    transition: width 0.25s var(--sd-ease), border-radius 0.25s var(--sd-ease), background 0.2s ease;
+}
+
+.sd-dot:hover {
+    background: var(--sd-accent-1);
+}
+
+.sd-dot.active {
+    width: 22px;
+    border-radius: 5px;
+    background: var(--sd-accent);
+}
+
+.sd-dot-badge {
+    position: absolute;
+    top: -10px;
+    right: -7px;
+    min-width: 14px;
+    height: 14px;
+    padding: 0 3px;
+    border-radius: 999px;
+    background: #d8425f;
+    color: #fff;
+    font-size: 0.6em;
+    line-height: 14px;
+    text-align: center;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Cards / sections                                                       */
+/* ---------------------------------------------------------------------- */
+
+.sd-section,
+.sd-subsection {
+    background: var(--sd-surface);
+    border: 1px solid var(--sd-border);
+    border-radius: var(--sd-radius-md);
+    padding: 14px;
+}
+
+.sd-section h4,
+.sd-subsection h4 {
+    margin: 0 0 8px 0;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Form controls                                                          */
+/* ---------------------------------------------------------------------- */
+
+.sd-popup input[type="number"],
+.sd-popup input[type="text"],
+.sd-popup select,
+.sd-popup textarea {
+    background: var(--sd-surface);
+    color: var(--sd-text);
+    border: 1px solid var(--sd-border);
+    border-radius: var(--sd-radius-sm);
+    padding: 7px 10px;
+    transition: border-color 0.15s ease;
+}
+
+.sd-popup input[type="number"]:focus,
+.sd-popup input[type="text"]:focus,
+.sd-popup select:focus,
+.sd-popup textarea:focus {
+    outline: none;
+    border-color: var(--sd-accent-2);
+}
+
+.sd-popup input[type="number"]::placeholder,
+.sd-popup textarea::placeholder {
+    color: var(--sd-text);
+    opacity: 0.5;
+}
+
+/* Plain, traditional checkboxes — sized up a little for easier tapping. */
+.sd-popup input[type="checkbox"] {
+    width: 17px;
+    height: 17px;
+    margin: 0;
+    flex: 0 0 auto;
+    cursor: pointer;
+    accent-color: var(--sd-accent-1);
+    vertical-align: middle;
+}
+
+.sd-popup input[type="checkbox"]:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.sd-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
+}
+
+.sd-row label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1 1 auto;
+    min-width: 160px;
+}
+
+.sd-row input[type="number"] {
+    width: 70px;
+}
+
+.sd-row input[type="checkbox"] {
+    flex: 0 0 auto;
+    cursor: pointer;
+}
+
+/* Buttons (scoped so we don't disturb the rest of the SillyTavern UI) */
+.sd-popup .menu_button {
+    background: var(--sd-surface) !important;
+    color: var(--sd-text) !important;
+    border: 1px solid var(--sd-border) !important;
+    border-radius: var(--sd-radius-sm) !important;
+    padding: 7px 14px;
+    transition: background 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+}
+
+.sd-popup .menu_button:hover {
+    border-color: var(--sd-accent-1) !important;
+}
+
+.sd-popup .menu_button:active {
+    background: var(--sd-accent-1) !important;
+    color: #fff !important;
+}
+
+.sd-popup .menu_button:disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+}
+
+.sd-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.sd-tag {
+    padding: 5px 12px;
+    border-radius: 999px;
+    border: 1px solid var(--sd-border);
+    background: transparent;
+    color: inherit;
+    cursor: pointer;
+    font-size: 0.85em;
+    user-select: none;
+    transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.sd-tag:hover {
+    border-color: var(--sd-accent-1);
+}
+
+.sd-tag.active {
+    background: var(--sd-accent);
+    border-color: transparent;
+    color: #fff;
+}
+
+.sd-tension-bar-wrap {
+    width: 100%;
+    height: 14px;
+    border-radius: 7px;
+    background: var(--sd-surface);
+    border: 1px solid var(--sd-border);
+    overflow: hidden;
+}
+
+.sd-tension-bar-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, #4caf50, #ffc107, #f44336);
+    transition: width 0.4s var(--sd-ease);
+}
+
+.sd-pool-textarea {
+    width: 100%;
+    min-height: 90px;
+    resize: vertical;
+}
+
+.sd-help {
+    font-size: 0.78em;
+    opacity: 0.7;
+    margin: 2px 0 10px 0;
+    line-height: 1.4;
+}
+
+.sd-history {
+    font-size: 0.8em;
+    opacity: 0.75;
+}
+
+.sd-io-row {
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.sd-hidden {
+    display: none !important;
+}
+
+.sd-io-row .menu_button {
+    flex: 0 0 auto;
+    width: auto;
+    white-space: nowrap;
+}
+
+.sd-full-history {
+    max-height: 220px;
+    overflow-y: auto;
+    background: var(--sd-surface);
+    border: 1px solid var(--sd-border);
+    border-radius: var(--sd-radius-sm);
+    padding: 6px 8px;
+    font-size: 0.78em;
+}
+
+.sd-log-entry {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    padding: 3px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.sd-log-entry:last-child {
+    border-bottom: none;
+}
+
+.sd-log-time {
+    opacity: 0.6;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.sd-log-kind {
+    opacity: 0.75;
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+.sd-log-summary {
+    flex: 1 1 160px;
+    word-break: break-word;
+}
+
+.sd-stat-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    padding: 4px 0;
+    font-size: 0.85em;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.sd-stat-row:last-of-type {
+    border-bottom: none;
+}
+
+.sd-manual-pick-list {
+    max-height: 180px;
+    overflow-y: auto;
+    background: var(--sd-surface);
+    border: 1px solid var(--sd-border);
+    border-radius: var(--sd-radius-sm);
+    padding: 4px 8px;
+    margin-top: 4px;
+}
+
+.sd-pick-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    padding: 4px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.2);
+}
+
+.sd-pick-row:last-child {
+    border-bottom: none;
+}
+
+.sd-pick-summary {
+    font-size: 0.85em;
+    word-break: break-word;
+}
+
+.sd-pick-row .menu_button {
+    flex: 0 0 auto;
+    white-space: nowrap;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Responsive tuning — mobile and PC                                      */
+/* ---------------------------------------------------------------------- */
+
+@media (max-width: 600px) {
+    .sd-section,
+    .sd-subsection {
+        padding: 10px;
+    }
+    .sd-stepper-header {
+        padding: 6px 6px;
+    }
+    .sd-stepper-desc {
+        display: none;
+    }
+}
+
+.sd-credit {
+    text-align: center;
+    font-size: 0.75em;
+    opacity: 0.55;
+    margin-top: 4px;
+}
+
+/* ---------------------------------------------------------------------- */
+/* Character Diary                                                        */
+/* ---------------------------------------------------------------------- */
+
+.sd-diary-reader {
+    max-height: 480px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    padding-right: 2px;
+}
+
+.sd-diary-card {
+    background: linear-gradient(180deg, #eef4fb, #e4edf8);
+    color: #2b3648;
+    border-radius: 16px;
+    padding: 16px 18px 14px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.18);
+}
+
+.sd-diary-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 6px;
+    border-bottom: 1px solid rgba(43, 54, 72, 0.15);
+    padding-bottom: 8px;
+    margin-bottom: 10px;
+}
+
+.sd-diary-date {
+    font-weight: 700;
+    font-size: 1.02em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.sd-diary-weather {
+    font-size: 0.82em;
+    opacity: 0.75;
+}
+
+.sd-diary-unread-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #e0546a;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+/* Approximates the ruled-notebook-paper look from a phone diary UI: a
+   repeating dashed line every line-height, independent of actual text
+   wrapping (a real per-line rule would need layout measurement in JS). */
+.sd-diary-p {
+    margin: 0 0 14px 0;
+    line-height: 1.85em;
+    background-image: repeating-linear-gradient(
+        transparent 0,
+        transparent calc(1.85em - 1px),
+        rgba(43, 54, 72, 0.22) 1.85em
+    );
+    background-size: 100% 1.85em;
+}
+
+.sd-diary-p:last-child {
+    margin-bottom: 0;
+}
+
+.sd-diary-suppressed {
+    text-decoration: line-through;
+    color: rgba(43, 54, 72, 0.45);
+}
+
+.sd-diary-truth {
+    background: #f6e08a;
+    padding: 0 2px;
+    border-radius: 2px;
+}
+
+.sd-diary-resolve {
+    text-decoration: underline;
+    text-decoration-color: #3a6fd8;
+    text-decoration-thickness: 2px;
+    color: #234a8f;
+    font-weight: 600;
+}
+
+.sd-diary-facade {
+    text-decoration: underline dotted;
+    text-decoration-color: #d8628a;
+    text-decoration-thickness: 2px;
+    color: #a4406a;
+}
+
+.sd-diary-ps {
+    margin-top: 10px;
+    padding-top: 8px;
+    border-top: 1px dashed rgba(43, 54, 72, 0.25);
+    font-style: italic;
+    font-size: 0.92em;
+    opacity: 0.85;
+}
+
+.sd-diary-mood {
+    margin-top: 8px;
+    font-size: 0.82em;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    opacity: 0.85;
+}
+
+.sd-diary-mood-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+}
+
+.sd-diary-timenote {
+    margin-top: 4px;
+    font-size: 0.76em;
+    text-align: right;
+    opacity: 0.55;
+}
