@@ -438,3 +438,92 @@
     .sd-tab-panel { padding: 7px 4px; }
     .sd-diary-card { padding: 14px 14px 12px; }
 }
+
+/* ---------------------------------------------------------------------- */
+/* In-app beginner's guide — floating, draggable, resizable panel          */
+/* ---------------------------------------------------------------------- */
+
+.sd-guide-trigger-btn {
+    background: none;
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.35));
+    color: inherit;
+    border-radius: 999px;
+    padding: 4px 12px;
+    font-size: 0.78em;
+    cursor: pointer;
+    opacity: 0.85;
+}
+.sd-guide-trigger-btn:hover { opacity: 1; background: rgba(128, 128, 128, 0.12); }
+
+.sd-guide-overlay {
+    position: fixed;
+    top: 70px;
+    right: 16px;
+    width: 340px;
+    height: 440px;
+    min-width: 260px;
+    min-height: 160px;
+    max-width: 94vw;
+    max-height: 90vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--SmartThemeBlurTintColor, #262b3a);
+    color: var(--SmartThemeBodyColor, #e6e6e6);
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.35));
+    border-radius: 10px;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    overflow: hidden;
+}
+.sd-guide-overlay.sd-hidden { display: none; }
+.sd-guide-overlay.sd-guide-minimized { height: auto !important; }
+.sd-guide-overlay.sd-guide-minimized .sd-guide-body,
+.sd-guide-overlay.sd-guide-minimized .sd-guide-resize-handle { display: none; }
+
+.sd-guide-header {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 6px;
+    padding: 8px 10px;
+    cursor: move;
+    user-select: none;
+    touch-action: none;
+    background: rgba(128, 128, 128, 0.14);
+    border-bottom: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.35));
+}
+.sd-guide-title { font-weight: 700; font-size: 0.85em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.sd-guide-header-actions { display: flex; gap: 2px; flex: 0 0 auto; }
+.sd-guide-header-actions button {
+    background: none; border: none; color: inherit; opacity: 0.75; cursor: pointer;
+    padding: 4px 7px; border-radius: 4px; font-size: 0.85em;
+}
+.sd-guide-header-actions button:hover { opacity: 1; background: rgba(128, 128, 128, 0.2); }
+
+.sd-guide-body { flex: 1 1 auto; overflow-y: auto; padding: 10px 12px; font-size: 0.8em; line-height: 1.55; }
+.sd-guide-body h2 { font-size: 1em; margin: 12px 0 5px; }
+.sd-guide-body h2:first-child { margin-top: 0; }
+.sd-guide-body table { width: 100%; border-collapse: collapse; margin: 6px 0; font-size: 0.95em; }
+.sd-guide-body th, .sd-guide-body td {
+    border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.3));
+    padding: 4px 6px; text-align: left; vertical-align: top;
+}
+.sd-guide-body ul, .sd-guide-body ol { padding-left: 1.2em; margin: 4px 0; }
+.sd-guide-body li { margin-bottom: 3px; }
+.sd-guide-body blockquote {
+    margin: 6px 0; padding: 6px 8px; opacity: 0.85;
+    border-left: 3px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.4));
+}
+.sd-guide-body p { margin: 4px 0; }
+
+.sd-guide-resize-handle {
+    position: absolute; right: 2px; bottom: 2px; width: 16px; height: 16px;
+    cursor: nwse-resize; touch-action: none;
+    background: linear-gradient(135deg, transparent 50%, rgba(128, 128, 128, 0.55) 50%);
+    border-bottom-right-radius: 10px;
+}
+
+@media (max-width: 480px) {
+    .sd-guide-overlay { width: min(92vw, 340px); right: 4vw; }
+}

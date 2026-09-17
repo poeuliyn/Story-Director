@@ -2085,6 +2085,9 @@ function buildPopupHtml(cfg, state) {
 
     return `
     <div class="sd-popup">
+        <div class="sd-row" style="justify-content:flex-end; margin:0 0 4px;">
+            <button type="button" class="sd-guide-trigger-btn" id="sd-guide-btn" title="เปิดคู่มือเริ่มต้นใช้งาน"><i class="fa-fw fa-solid fa-circle-question"></i> คู่มือเริ่มต้น</button>
+        </div>
         <div class="sd-tabbar" id="sd-tabbar" role="tablist">
             <div class="sd-tab-pill" id="sd-tab-pill"></div>
             ${tabButtons}
@@ -2557,11 +2560,186 @@ function wireLiveCapture(draft) {
     };
 }
 
+// -----------------------------------------------------------------------
+// In-app beginner's guide — a draggable/resizable floating panel so the
+// person can read it without leaving the extension or opening a separate
+// file. Content mirrors GUIDE.md but is embedded here so it works offline
+// with no extra fetch.
+// -----------------------------------------------------------------------
+function buildGuideBodyHtml() {
+    return `
+        <h2>ขั้นที่ 1: สิ่งที่ต้องทำก่อน (บังคับ)</h2>
+        <ol>
+            <li>ติดตั้งส่วนขยายให้เรียบร้อยตามหัวข้อ "วิธีติดตั้ง" ใน README.md</li>
+            <li>เปิดเมนู Story Director จากไอคอนรูปอุ้งเท้าในเมนูส่วนขยาย</li>
+            <li>แท็บ <b>ทั่วไป</b> → หัวข้อ "API สำหรับ Director" → เลือก Connection Profile ในช่อง "โปรไฟล์ API" → กด <b>ทดสอบ</b></li>
+            <li>กด <b>บันทึก</b></li>
+        </ol>
+        <blockquote>อยากให้ Director ตัดสินใจทันที กดปุ่ม "เร่งให้ Director ตัดสินใจในข้อความถัดไป" ในแท็บทั่วไปได้</blockquote>
+
+        <h2>ขั้นที่ 2: อะไรเปิดอยู่แล้วโดยไม่ต้องทำอะไรเพิ่ม</h2>
+        <table>
+            <tr><th>ฟีเจอร์</th><th>ทำอะไร</th></tr>
+            <tr><td>ตัวช่วยกันเธรดจำเจ</td><td>เตือน Director ถ้าธีมเธรดซ้ำกันบ่อยเกินไป</td></tr>
+            <tr><td>Time Skip</td><td>Director ข้ามเวลาได้เองเมื่อฉากจบลงเป็นธรรมชาติ</td></tr>
+            <tr><td>ความเดิมตอนที่แล้วอัตโนมัติ</td><td>สรุปเธรดค้างให้เมื่อห่างหายไปนาน (เกิน 24 ชม.)</td></tr>
+            <tr><td>Follow-up ต่อเนื่อง</td><td>เธรดที่เพิ่งดันคืบมีโอกาสถูกผูกคิวให้กลับมาต่อ</td></tr>
+            <tr><td>เหตุการณ์ที่มี NPC เกี่ยวข้อง</td><td>Director ดึงตัวละครสมทบเข้ามาในเหตุการณ์</td></tr>
+            <tr><td>ความลับของตัวละคร (Secrets)</td><td>เปิดไว้ แต่ยังไม่มีความลับจริงจนกว่าจะเพิ่มเอง</td></tr>
+            <tr><td>Callback อดีต</td><td>หยิบรายละเอียดเก่ากลับมาเล่าใหม่เป็นครั้งคราว</td></tr>
+            <tr><td>Story Arcs</td><td>Director วางแผนโครงเรื่องระยะยาวเอง</td></tr>
+            <tr><td>สมุดไดอารี่</td><td>ตัวละครเขียนไดอารี่ตามความคืบหน้า</td></tr>
+            <tr><td>ระบบความผูกพัน (Bond)</td><td>ประเมินค่าความผูกพันหลังทุกเหตุการณ์</td></tr>
+            <tr><td>เสียงแจ้งเตือน</td><td>มีเสียงตอนมีเหตุการณ์ใหม่</td></tr>
+        </table>
+
+        <h2>ขั้นที่ 3: ปรับแต่งเบื้องต้นที่แนะนำ</h2>
+        <p>อยู่ในแท็บ <b>ตั้งค่า</b> ทั้งหมด:</p>
+        <ol>
+            <li><b>ธีมที่อนุญาต</b> — เลือกแนวที่อยากให้เนื้อเรื่องไปทาง</li>
+            <li><b>บุคลิก Director</b> — เลือกโทนการตัดสินใจ</li>
+            <li><b>ความถี่ที่ Director จะพิจารณา</b> — ค่าเริ่มต้นสุ่ม 20% ทุกข้อความ</li>
+            <li><b>ความรุนแรงของเหตุการณ์</b> และ <b>รูปแบบการนำเสนอ</b> — ปรับตามสไตล์ที่ชอบ</li>
+        </ol>
+
+        <h2>ขั้นที่ 4: ถ้ารู้สึกว่าเยอะเกินไป</h2>
+        <p>ลองปิดกลุ่ม "เนื้อเรื่องขั้นสูง" เหล่านี้ก่อน แล้วค่อยเปิดกลับมาทีละอย่าง:</p>
+        <ol>
+            <li>ความลับของตัวละคร (Secrets)</li>
+            <li>Callback อดีต</li>
+            <li>โครงเรื่องระยะยาวแบบซีซั่น (Story Arcs)</li>
+            <li>เหตุการณ์ที่มี NPC เกี่ยวข้อง</li>
+        </ol>
+
+        <h2>แผนที่ฟีเจอร์ — อยู่แท็บไหนบ้าง</h2>
+        <ul>
+            <li><b>ทั่วไป</b> — เปิด/ปิดระบบ, API, ปุ่มเร่ง Director, เสียง, นำเข้า/ส่งออก</li>
+            <li><b>ตั้งค่า</b> — ธีม, บุคลิก, ความถี่/ความรุนแรง/การนำเสนอ, Time Skip, Follow-up, NPC, Secrets, Callback, Story Arcs, คลังเหตุการณ์, Prompt Preview</li>
+            <li><b>เธรด</b> — อาร์คปัจจุบัน, แผนที่เธรด, เธรดที่ดำเนิน/ปิดแล้ว, ความลับที่ดำเนินอยู่, แผนที่ความผูกพัน/NPC</li>
+            <li><b>ไดอารี่</b> — เปิด/ปิดไดอารี่, สติกเกอร์, ไอคอนสภาพอากาศ, ปฏิทิน, กราฟความผูกพัน, จดหมาย, วันสำคัญ, ธีมสี</li>
+            <li><b>ประวัติ</b> — สถิติ+รายการเหตุการณ์, สำรอง/กู้คืนข้อมูล</li>
+        </ul>
+
+        <h2>แก้ปัญหาเบื้องต้น</h2>
+        <ul>
+            <li><b>Director ไม่ทำงานเลย</b> → เช็ค "เปิดใช้งานกับแชทนี้", เลือกโปรไฟล์ API, กด "ทดสอบ" ผ่าน, กด "บันทึก" แล้ว</li>
+            <li><b>อยากให้เกิดเหตุการณ์เดี๋ยวนี้</b> → กด "เร่งให้ Director ตัดสินใจในข้อความถัดไป"</li>
+            <li><b>ไดอารี่ไม่ถูกเขียน</b> → เช็ค "เปิดใช้สมุดไดอารี่" และตัวละครไม่ได้ถูกปิดไว้เป็นรายตัว</li>
+            <li><b>เสียงไม่ดัง</b> → เช็คติ๊กเปิดเสียง และลองกด "ลองฟังเสียง"</li>
+            <li><b>Secrets/Arc/Callback ยังไม่เกิด</b> → ขึ้นกับจังหวะที่ Director เห็นว่าเหมาะสม ไม่ได้เกิดทันที</li>
+            <li><b>อยากดูข้อความที่ส่งให้ Director</b> → เปิด "Prompt Preview" ในแท็บตั้งค่า</li>
+        </ul>
+        <p style="opacity:0.7; font-size:0.9em;">รายละเอียดเพิ่มเติมของแต่ละฟีเจอร์ ดูได้ใน README.md</p>
+    `;
+}
+
+function ensureGuideOverlay() {
+    let overlay = document.getElementById("sd-guide-overlay");
+    if (overlay) return overlay;
+
+    overlay = document.createElement("div");
+    overlay.id = "sd-guide-overlay";
+    overlay.className = "sd-guide-overlay sd-hidden";
+    overlay.innerHTML = `
+        <div class="sd-guide-header" id="sd-guide-header">
+            <span class="sd-guide-title">📘 คู่มือเริ่มต้นใช้งาน</span>
+            <div class="sd-guide-header-actions">
+                <button type="button" id="sd-guide-min-btn" title="ย่อ/ขยาย"><i class="fa-fw fa-solid fa-window-minimize"></i></button>
+                <button type="button" id="sd-guide-close-btn" title="ปิด"><i class="fa-fw fa-solid fa-xmark"></i></button>
+            </div>
+        </div>
+        <div class="sd-guide-body" id="sd-guide-body">${buildGuideBodyHtml()}</div>
+        <div class="sd-guide-resize-handle" id="sd-guide-resize-handle"></div>`;
+    document.body.appendChild(overlay);
+
+    const header = overlay.querySelector("#sd-guide-header");
+    const minBtn = overlay.querySelector("#sd-guide-min-btn");
+    const closeBtn = overlay.querySelector("#sd-guide-close-btn");
+    const resizeHandle = overlay.querySelector("#sd-guide-resize-handle");
+
+    // Drag by the header, pointer events cover mouse + touch in one code path.
+    let dragging = false, dragStartX = 0, dragStartY = 0, dragOrigLeft = 0, dragOrigTop = 0;
+    header.addEventListener("pointerdown", (e) => {
+        if (e.target.closest("button")) return;
+        dragging = true;
+        const rect = overlay.getBoundingClientRect();
+        dragStartX = e.clientX; dragStartY = e.clientY;
+        dragOrigLeft = rect.left; dragOrigTop = rect.top;
+        overlay.style.left = `${rect.left}px`;
+        overlay.style.top = `${rect.top}px`;
+        overlay.style.right = "auto";
+        overlay.style.bottom = "auto";
+        try { header.setPointerCapture(e.pointerId); } catch (err) { /* noop */ }
+    });
+    header.addEventListener("pointermove", (e) => {
+        if (!dragging) return;
+        const dx = e.clientX - dragStartX, dy = e.clientY - dragStartY;
+        const maxLeft = window.innerWidth - 60, maxTop = window.innerHeight - 40;
+        overlay.style.left = `${Math.max(-100, Math.min(maxLeft, dragOrigLeft + dx))}px`;
+        overlay.style.top = `${Math.max(0, Math.min(maxTop, dragOrigTop + dy))}px`;
+    });
+    const endDrag = () => { dragging = false; };
+    header.addEventListener("pointerup", endDrag);
+    header.addEventListener("pointercancel", endDrag);
+
+    // Resize from the bottom-right corner handle, same pointer-event approach.
+    let resizing = false, resizeStartX = 0, resizeStartY = 0, resizeStartW = 0, resizeStartH = 0;
+    resizeHandle.addEventListener("pointerdown", (e) => {
+        resizing = true;
+        const rect = overlay.getBoundingClientRect();
+        resizeStartX = e.clientX; resizeStartY = e.clientY;
+        resizeStartW = rect.width; resizeStartH = rect.height;
+        try { resizeHandle.setPointerCapture(e.pointerId); } catch (err) { /* noop */ }
+        e.stopPropagation();
+    });
+    resizeHandle.addEventListener("pointermove", (e) => {
+        if (!resizing) return;
+        const newW = Math.max(260, Math.min(window.innerWidth - 16, resizeStartW + (e.clientX - resizeStartX)));
+        const newH = Math.max(160, Math.min(window.innerHeight - 16, resizeStartH + (e.clientY - resizeStartY)));
+        overlay.style.width = `${newW}px`;
+        overlay.style.height = `${newH}px`;
+    });
+    const endResize = () => { resizing = false; };
+    resizeHandle.addEventListener("pointerup", endResize);
+    resizeHandle.addEventListener("pointercancel", endResize);
+
+    minBtn.addEventListener("click", () => {
+        overlay.classList.toggle("sd-guide-minimized");
+        const icon = minBtn.querySelector("i");
+        if (icon) icon.className = overlay.classList.contains("sd-guide-minimized") ? "fa-fw fa-solid fa-window-maximize" : "fa-fw fa-solid fa-window-minimize";
+    });
+    closeBtn.addEventListener("click", () => overlay.classList.add("sd-hidden"));
+
+    return overlay;
+}
+
+function toggleGuideOverlay() {
+    const overlay = ensureGuideOverlay();
+    overlay.classList.toggle("sd-hidden");
+    if (!overlay.classList.contains("sd-hidden")) {
+        overlay.classList.remove("sd-guide-minimized");
+        // Normalize the CSS-anchored starting position (top/right) into explicit
+        // left/top the first time it's actually visible — getBoundingClientRect
+        // would read zeros while display:none, so this can't happen at creation.
+        if (!overlay.dataset.positioned) {
+            const rect = overlay.getBoundingClientRect();
+            overlay.style.left = `${rect.left}px`;
+            overlay.style.top = `${rect.top}px`;
+            overlay.style.right = "auto";
+            overlay.dataset.positioned = "1";
+        }
+    }
+}
+
 function wireQuickActions(cfg, draft, state) {
     const handler = (e) => {
-        const target = e.target.closest ? e.target.closest("#sd-force-btn, #sd-sound-test-btn, #sd-api-test-btn, #sd-clear-log-btn, #sd-preview-director-btn") : null;
+        const target = e.target.closest ? e.target.closest("#sd-force-btn, #sd-sound-test-btn, #sd-api-test-btn, #sd-clear-log-btn, #sd-preview-director-btn, #sd-guide-btn") : null;
         if (!target) return;
 
+        if (target.id === "sd-guide-btn") {
+            toggleGuideOverlay();
+            return;
+        }
         if (target.id === "sd-force-btn") {
             state.forceNextCheck = true;
             saveChatState();
