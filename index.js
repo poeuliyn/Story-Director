@@ -2568,48 +2568,46 @@ function wireLiveCapture(draft) {
 // -----------------------------------------------------------------------
 function buildGuideBodyHtml() {
     return `
-        <h2>ขั้นที่ 1: สิ่งที่ต้องทำก่อน (บังคับ)</h2>
+        <h2>บทเรียนที่ 1 — ต่อสาย Director ให้ทำงาน</h2>
+        <p>ทำตามนี้ทีละข้อ:</p>
         <ol>
-            <li>ติดตั้งส่วนขยายให้เรียบร้อยตามหัวข้อ "วิธีติดตั้ง" ใน README.md</li>
-            <li>เปิดเมนู Story Director จากไอคอนรูปอุ้งเท้าในเมนูส่วนขยาย</li>
-            <li>แท็บ <b>ทั่วไป</b> → หัวข้อ "API สำหรับ Director" → เลือก Connection Profile ในช่อง "โปรไฟล์ API" → กด <b>ทดสอบ</b></li>
-            <li>กด <b>บันทึก</b></li>
+            <li>แตะแท็บ <b>ทั่วไป</b> ด้านบน</li>
+            <li>เลื่อนหาหัวข้อ "API สำหรับ Director" แล้วแตะช่อง <b>โปรไฟล์ API</b> เลือก Connection Profile ที่คุณตั้งค่าไว้แล้วในเมนู API ของ SillyTavern</li>
+            <li>แตะปุ่ม <b>ทดสอบ</b> — รอสักครู่ ถ้าขึ้นว่า "เชื่อมต่อสำเร็จ" แปลว่าใช้ได้แล้ว</li>
+            <li>แตะปุ่ม <b>บันทึก</b> ที่ด้านล่างของป็อปอัพ</li>
         </ol>
-        <blockquote>อยากให้ Director ตัดสินใจทันที กดปุ่ม "เร่งให้ Director ตัดสินใจในข้อความถัดไป" ในแท็บทั่วไปได้</blockquote>
+        <p>เท่านี้จบ! ตั้งแต่ข้อความถัดไปที่ตัวละครพิมพ์ตอบในแชท Director จะเริ่มแอบตัดสินใจอยู่เบื้องหลังโดยอัตโนมัติ ไม่ต้องกดอะไรเพิ่มอีก</p>
 
-        <h2>ขั้นที่ 2: อะไรเปิดอยู่แล้วโดยไม่ต้องทำอะไรเพิ่ม</h2>
-        <table>
-            <tr><th>ฟีเจอร์</th><th>ทำอะไร</th></tr>
-            <tr><td>ตัวช่วยกันเธรดจำเจ</td><td>เตือน Director ถ้าธีมเธรดซ้ำกันบ่อยเกินไป</td></tr>
-            <tr><td>Time Skip</td><td>Director ข้ามเวลาได้เองเมื่อฉากจบลงเป็นธรรมชาติ</td></tr>
-            <tr><td>ความเดิมตอนที่แล้วอัตโนมัติ</td><td>สรุปเธรดค้างให้เมื่อห่างหายไปนาน (เกิน 24 ชม.)</td></tr>
-            <tr><td>Follow-up ต่อเนื่อง</td><td>เธรดที่เพิ่งดันคืบมีโอกาสถูกผูกคิวให้กลับมาต่อ</td></tr>
-            <tr><td>เหตุการณ์ที่มี NPC เกี่ยวข้อง</td><td>Director ดึงตัวละครสมทบเข้ามาในเหตุการณ์</td></tr>
-            <tr><td>ความลับของตัวละคร (Secrets)</td><td>เปิดไว้ แต่ยังไม่มีความลับจริงจนกว่าจะเพิ่มเอง</td></tr>
-            <tr><td>Callback อดีต</td><td>หยิบรายละเอียดเก่ากลับมาเล่าใหม่เป็นครั้งคราว</td></tr>
-            <tr><td>Story Arcs</td><td>Director วางแผนโครงเรื่องระยะยาวเอง</td></tr>
-            <tr><td>สมุดไดอารี่</td><td>ตัวละครเขียนไดอารี่ตามความคืบหน้า</td></tr>
-            <tr><td>ระบบความผูกพัน (Bond)</td><td>ประเมินค่าความผูกพันหลังทุกเหตุการณ์</td></tr>
-            <tr><td>เสียงแจ้งเตือน</td><td>มีเสียงตอนมีเหตุการณ์ใหม่</td></tr>
-        </table>
-
-        <h2>ขั้นที่ 3: ปรับแต่งเบื้องต้นที่แนะนำ</h2>
-        <p>อยู่ในแท็บ <b>ตั้งค่า</b> ทั้งหมด:</p>
+        <h2>บทเรียนที่ 2 — ลองดูของจริงใน 2 นาที</h2>
+        <p>อยากเห็นผลทันทีไม่ต้องรอ ลองทำตามนี้:</p>
         <ol>
-            <li><b>ธีมที่อนุญาต</b> — เลือกแนวที่อยากให้เนื้อเรื่องไปทาง</li>
-            <li><b>บุคลิก Director</b> — เลือกโทนการตัดสินใจ</li>
-            <li><b>ความถี่ที่ Director จะพิจารณา</b> — ค่าเริ่มต้นสุ่ม 20% ทุกข้อความ</li>
-            <li><b>ความรุนแรงของเหตุการณ์</b> และ <b>รูปแบบการนำเสนอ</b> — ปรับตามสไตล์ที่ชอบ</li>
+            <li>แตะแท็บ <b>ทั่วไป</b> → แตะปุ่ม <b>เร่งให้ Director ตัดสินใจในข้อความถัดไป</b></li>
+            <li>ปิดป็อปอัพนี้ กลับไปที่หน้าแชท แล้วพิมพ์คุยกับตัวละครตามปกติ 1 ข้อความ</li>
+            <li>สังเกตหลังตัวละครตอบ: อาจมีเสียงสั้นๆ ดังขึ้น หรือมีข้อความ/บรรยากาศแทรกเข้ามาในคำตอบ นั่นคือ Director เพิ่งตัดสินใจสร้างเหตุการณ์ให้</li>
+            <li>เปิดป็อปอัพ Story Director อีกครั้ง แตะแท็บ <b>เธรด</b> — จะเห็นปมเรื่อง (thread) ใหม่ที่เพิ่งถูกเปิดขึ้นจากเหตุการณ์ที่เพิ่งเกิด</li>
+            <li>แตะแท็บ <b>ไดอารี่</b> — ถ้าตัวละครเขียนบันทึกจากเหตุการณ์นั้น จะเห็นการ์ดไดอารี่ใหม่โผล่ขึ้นมา</li>
         </ol>
 
-        <h2>ขั้นที่ 4: ถ้ารู้สึกว่าเยอะเกินไป</h2>
-        <p>ลองปิดกลุ่ม "เนื้อเรื่องขั้นสูง" เหล่านี้ก่อน แล้วค่อยเปิดกลับมาทีละอย่าง:</p>
+        <h2>บทเรียนที่ 3 — ปรับสไตล์เรื่องให้เป็นของคุณเอง</h2>
+        <p>ลองทำตามตัวอย่างนี้ในแท็บ <b>ตั้งค่า</b>:</p>
         <ol>
-            <li>ความลับของตัวละคร (Secrets)</li>
-            <li>Callback อดีต</li>
-            <li>โครงเรื่องระยะยาวแบบซีซั่น (Story Arcs)</li>
-            <li>เหตุการณ์ที่มี NPC เกี่ยวข้อง</li>
+            <li>เลื่อนไปที่ "ธีมที่อนุญาต" → แตะเลือก <b>Romance</b> กับ <b>Drama</b> (แตะซ้ำเพื่อยกเลิก ถ้าอยากลองแบบอื่น)</li>
+            <li>เลื่อนไปที่ "ความถี่ที่ Director จะพิจารณา" → เปลี่ยนช่อง "โอกาส (%)" จาก 20 เป็น 35</li>
+            <li>แตะ <b>บันทึก</b> แล้วลองคุยกับตัวละครต่ออีกสัก 5-10 ข้อความ</li>
+            <li>จะสังเกตได้ว่าเหตุการณ์เชิงโรแมนติก/ดราม่าเริ่มโผล่มาบ่อยและถี่ขึ้นกว่าตอนเปิดค่าเริ่มต้น</li>
         </ol>
+        <p>ลองปรับ "บุคลิก Director", "ความรุนแรงของเหตุการณ์" และ "รูปแบบการนำเสนอ" ด้วยวิธีเดียวกัน — เปลี่ยนค่า บันทึก แล้วคุยต่อดูว่าโทนเรื่องเปลี่ยนไปยังไง</p>
+
+        <h2>บทเรียนที่ 4 — ลองปลดล็อกของเล่นขั้นสูงทีละอย่าง</h2>
+        <p><b>ตัวอย่าง: เพิ่มความลับให้ตัวละคร (Secrets)</b></p>
+        <ol>
+            <li>แท็บ <b>ตั้งค่า</b> → เลื่อนหาหัวข้อ "ความลับของตัวละคร (Secrets)"</li>
+            <li>พิมพ์ชื่อตัวละคร/NPC ในช่อง "ชื่อตัวละคร/NPC เจ้าของความลับ" เช่น ชื่อตัวละครหลักของคุณ</li>
+            <li>ปล่อยช่องเนื้อหาว่างไว้ได้เลยถ้ายังไม่มีไอเดีย (Director จะแต่งเนื้อหาขึ้นเองตอนเริ่มใช้)</li>
+            <li>แตะ <b>เพิ่มเข้ารายการ</b> แล้วแตะ <b>บันทึก</b></li>
+            <li>เล่นต่อไปเรื่อยๆ ตามปกติ — วันหนึ่ง Director จะเริ่มหยิบความลับนี้มาปล่อยเป็นเบาะแสเล็กๆ ในบทสนทนาเองโดยไม่ต้องสั่ง แล้วค่อยๆ เฉลยเมื่อจังหวะเรื่องสุกงอม ดูสถานะได้ที่แท็บ <b>เธรด</b></li>
+        </ol>
+        <p>ฟีเจอร์อื่นในกลุ่มเดียวกัน (Callback อดีต, Story Arcs, เหตุการณ์ที่มี NPC เกี่ยวข้อง) ก็ทำงานแบบเดียวกันคือ "ตั้งไว้แล้วรอ Director หยิบมาใช้เอง" ลองเปิดดูทีละอันได้เลย ถ้ารู้สึกว่าเยอะเกินไปให้ปิดบางอันก่อนแล้วค่อยเปิดกลับมาทีหลังได้เสมอ</p>
 
         <h2>แผนที่ฟีเจอร์ — อยู่แท็บไหนบ้าง</h2>
         <ul>
@@ -2635,9 +2633,14 @@ function ensureGuideOverlay() {
     let overlay = document.getElementById("sd-guide-overlay");
     if (overlay) return overlay;
 
-    overlay = document.createElement("div");
+    // A native <dialog> shown non-modally (.show(), not .showModal()) renders in
+    // the browser's top layer — the same layer SillyTavern's own popup framework
+    // is likely to use. A plain position:fixed div, however high its z-index, can
+    // never paint above a top-layer element, which is why this needs to be a
+    // <dialog> rather than a <div> to reliably sit over the Story Director popup.
+    overlay = document.createElement("dialog");
     overlay.id = "sd-guide-overlay";
-    overlay.className = "sd-guide-overlay sd-hidden";
+    overlay.className = "sd-guide-overlay";
     overlay.innerHTML = `
         <div class="sd-guide-header" id="sd-guide-header">
             <span class="sd-guide-title">📘 คู่มือเริ่มต้นใช้งาน</span>
@@ -2706,26 +2709,30 @@ function ensureGuideOverlay() {
         const icon = minBtn.querySelector("i");
         if (icon) icon.className = overlay.classList.contains("sd-guide-minimized") ? "fa-fw fa-solid fa-window-maximize" : "fa-fw fa-solid fa-window-minimize";
     });
-    closeBtn.addEventListener("click", () => overlay.classList.add("sd-hidden"));
+    closeBtn.addEventListener("click", () => overlay.close());
 
     return overlay;
 }
 
 function toggleGuideOverlay() {
     const overlay = ensureGuideOverlay();
-    overlay.classList.toggle("sd-hidden");
-    if (!overlay.classList.contains("sd-hidden")) {
-        overlay.classList.remove("sd-guide-minimized");
-        // Normalize the CSS-anchored starting position (top/right) into explicit
-        // left/top the first time it's actually visible — getBoundingClientRect
-        // would read zeros while display:none, so this can't happen at creation.
-        if (!overlay.dataset.positioned) {
-            const rect = overlay.getBoundingClientRect();
-            overlay.style.left = `${rect.left}px`;
-            overlay.style.top = `${rect.top}px`;
-            overlay.style.right = "auto";
-            overlay.dataset.positioned = "1";
-        }
+    if (overlay.open) {
+        overlay.close();
+        return;
+    }
+    // .show() (not .showModal()) puts it in the top layer without a backdrop,
+    // so the rest of the page — and the Story Director popup — stay interactive.
+    overlay.show();
+    overlay.classList.remove("sd-guide-minimized");
+    // Normalize the CSS-anchored starting position (top/right) into explicit
+    // left/top the first time it's actually visible — getBoundingClientRect
+    // would read zeros while closed/display:none, so this can't happen at creation.
+    if (!overlay.dataset.positioned) {
+        const rect = overlay.getBoundingClientRect();
+        overlay.style.left = `${rect.left}px`;
+        overlay.style.top = `${rect.top}px`;
+        overlay.style.right = "auto";
+        overlay.dataset.positioned = "1";
     }
 }
 
