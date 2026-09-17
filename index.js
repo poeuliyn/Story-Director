@@ -170,7 +170,7 @@ function getRecentChatTranscript(maxMessages) {
 
 // Defaults
 
-const THEME_TAGS = ["Comedy", "Sci-Fi", "Fantasy", "Romance", "Drama", "Horror", "Thriller", "Mystery", "Action"];
+const THEME_TAGS = ["Comedy", "Sci-Fi", "Fantasy", "Romance", "Drama", "Horror", "Thriller", "Mystery", "Action", "Slice of Life", "Supernatural", "Sports", "School/Coming-of-age", "Adventure", "Historical", "Detective", "Isekai"];
 
 // Vibe tags — a lightweight, separate-from-genre "mood" label the Director
 // assigns to each newly opened thread, used only to detect and break up
