@@ -184,6 +184,9 @@ const DIRECTOR_PERSONA_NOTES = {
     comedic: "เน้นมุมตลกขบขันหรือความกวนๆ แบบเบาสมอง สถานการณ์ที่ทำให้ฉากมีชีวิตชีวาแบบสนุกสนาน ไม่จำเป็นต้องหนักหน่วงหรือจริงจังทุกครั้ง",
     slow_burn: "ค่อยเป็นค่อยไป เน้นรายละเอียดเล็กๆ และการสะสมความรู้สึกทีละนิด หลีกเลี่ยงการดันเธรดให้คืบเร็วเกินไปหรือปิดจบเร็วเกินไป",
     twist: "มองหาโอกาสพลิกความคาดหมายของผู้เล่นอยู่เสมอ ถ้าเธรดไหนดูจะไปในทางที่คาดเดาได้ง่าย ให้ลองเปลี่ยนทิศทางที่ไม่มีใครคาดคิดแทน โดยยังต้องสมเหตุสมผลกับบริบทที่ผ่านมา",
+    wholesome: "เน้นความอบอุ่นและความรู้สึกเชิงบวก เลือกเหตุการณ์ที่สร้างความผูกพัน ความอุ่นใจ หรือรอยยิ้ม หลีกเลี่ยงความขัดแย้งรุนแรงหรือเหตุการณ์ที่ทำให้รู้สึกไม่ปลอดภัย",
+    high_stakes: "เน้นความเสี่ยงสูงและผลกระทบที่หนักหน่วง เลือกเหตุการณ์ที่มีอะไรบางอย่างตกอยู่ในอันตรายจริงๆ (ไม่ว่าจะทางร่างกาย ความสัมพันธ์ หรือสถานะของตัวละคร) ให้ความรู้สึกว่าผลลัพธ์ของแต่ละการตัดสินใจสำคัญและย้อนกลับได้ยาก",
+    enigmatic: "เน้นทิ้งปริศนาและเบาะแสที่ยังไม่มีคำตอบไว้ให้ค้างคาใจ ไม่รีบเฉลยหรือคลี่คลายอะไรง่ายๆ เลือกเหตุการณ์ที่ชวนสงสัยมากกว่าที่จะให้คำตอบชัดเจนทันที",
 };
 
 function resolveDirectorPersonaKey(cfg) {
@@ -218,7 +221,7 @@ const DEFAULT_CHAT_SETTINGS = () => ({
 
     eventPool: [],                // [{ id, title, detail }] — user-authored thread seeds
 
-    directorPersona: "balanced",  // 'balanced' | 'dramatic' | 'comedic' | 'slow_burn' | 'twist' | 'random'
+    directorPersona: "balanced",  // 'balanced' | 'dramatic' | 'comedic' | 'slow_burn' | 'twist' | 'wholesome' | 'high_stakes' | 'enigmatic' | 'random'
     antiStagnationEnabled: true,
 
     npcEventsEnabled: true,
@@ -2162,6 +2165,9 @@ function buildPopupHtml(cfg, state) {
                         <option value="comedic" ${cfg.directorPersona === "comedic" ? "selected" : ""}>ตลก/เบาสมอง</option>
                         <option value="slow_burn" ${cfg.directorPersona === "slow_burn" ? "selected" : ""}>Slow burn</option>
                         <option value="twist" ${cfg.directorPersona === "twist" ? "selected" : ""}>สายทวิสต์</option>
+                        <option value="wholesome" ${cfg.directorPersona === "wholesome" ? "selected" : ""}>อบอุ่น/Feel-good</option>
+                        <option value="high_stakes" ${cfg.directorPersona === "high_stakes" ? "selected" : ""}>เข้มข้น/เสี่ยงสูง</option>
+                        <option value="enigmatic" ${cfg.directorPersona === "enigmatic" ? "selected" : ""}>ลึกลับ/เก็บปม</option>
                         <option value="random" ${cfg.directorPersona === "random" ? "selected" : ""}>สุ่มทุกครั้ง</option>
                     </select>
                 </div>
