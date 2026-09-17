@@ -467,12 +467,15 @@
     max-height: 90vh;
     display: flex;
     flex-direction: column;
-    background: var(--SmartThemeBlurTintColor, #262b3a);
+    background-color: var(--SmartThemeBlurTintColor, #262b3a);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.55));
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
     color: var(--SmartThemeBodyColor, #e6e6e6);
     border: 1px solid var(--SmartThemeBorderColor, rgba(128, 128, 128, 0.35));
     border-radius: 10px;
-    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.5);
-    z-index: 9999;
+    box-shadow: 0 10px 34px rgba(0, 0, 0, 0.6);
+    z-index: 100000;
     overflow: hidden;
 }
 .sd-guide-overlay.sd-hidden { display: none; }
