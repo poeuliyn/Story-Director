@@ -176,17 +176,17 @@ const THEME_TAGS = ["Comedy", "Sci-Fi", "Fantasy", "Romance", "Drama", "Horror",
 // assigns to each newly opened thread, used only to detect and break up
 // stagnation (see buildStagnationNote). Not shown to the model as a genre
 // restriction, just a way to notice "the last 3 threads were all romance".
-const VIBE_TAGS = ["โรแมนติก", "ขัดแย้ง/ตึงเครียด", "อบอุ่น/สงบ", "ตลก/เบาสมอง", "ลึกลับ/ปริศนา", "ผจญภัย/แอ็กชัน", "เศร้า/สะเทือนใจ"];
+const VIBE_TAGS = ["Romantic", "Conflict/Tense", "Warm/Calm", "Comedic/Lighthearted", "Mysterious/Enigmatic", "Adventure/Action", "Sad/Poignant"];
 
 const DIRECTOR_PERSONA_NOTES = {
-    balanced: "สมดุล ไม่เอนเอียงไปทางใดทางหนึ่งเป็นพิเศษ ตัดสินใจตามจังหวะเรื่องล้วนๆ โดยไม่มีสีสันเฉพาะตัว",
-    dramatic: "เน้นดราม่า อารมณ์เข้มข้น ความขัดแย้งภายในใจและระหว่างตัวละคร เลือกสิ่งที่เขย่าอารมณ์ผู้เล่นมากที่สุดในบรรดาตัวเลือกที่เป็นไปได้",
-    comedic: "เน้นมุมตลกขบขันหรือความกวนๆ แบบเบาสมอง สถานการณ์ที่ทำให้ฉากมีชีวิตชีวาแบบสนุกสนาน ไม่จำเป็นต้องหนักหน่วงหรือจริงจังทุกครั้ง",
-    slow_burn: "ค่อยเป็นค่อยไป เน้นรายละเอียดเล็กๆ และการสะสมความรู้สึกทีละนิด หลีกเลี่ยงการดันเธรดให้คืบเร็วเกินไปหรือปิดจบเร็วเกินไป",
-    twist: "มองหาโอกาสพลิกความคาดหมายของผู้เล่นอยู่เสมอ ถ้าเธรดไหนดูจะไปในทางที่คาดเดาได้ง่าย ให้ลองเปลี่ยนทิศทางที่ไม่มีใครคาดคิดแทน โดยยังต้องสมเหตุสมผลกับบริบทที่ผ่านมา",
-    wholesome: "เน้นความอบอุ่นและความรู้สึกเชิงบวก เลือกเหตุการณ์ที่สร้างความผูกพัน ความอุ่นใจ หรือรอยยิ้ม หลีกเลี่ยงความขัดแย้งรุนแรงหรือเหตุการณ์ที่ทำให้รู้สึกไม่ปลอดภัย",
-    high_stakes: "เน้นความเสี่ยงสูงและผลกระทบที่หนักหน่วง เลือกเหตุการณ์ที่มีอะไรบางอย่างตกอยู่ในอันตรายจริงๆ (ไม่ว่าจะทางร่างกาย ความสัมพันธ์ หรือสถานะของตัวละคร) ให้ความรู้สึกว่าผลลัพธ์ของแต่ละการตัดสินใจสำคัญและย้อนกลับได้ยาก",
-    enigmatic: "เน้นทิ้งปริศนาและเบาะแสที่ยังไม่มีคำตอบไว้ให้ค้างคาใจ ไม่รีบเฉลยหรือคลี่คลายอะไรง่ายๆ เลือกเหตุการณ์ที่ชวนสงสัยมากกว่าที่จะให้คำตอบชัดเจนทันที",
+    balanced: "No particular thematic lean toward drama, comedy, or any other flavor — but every decision must still be a genuinely concrete, specific story beat with real substance, never filler or a vague continuation of the current scene.",
+    dramatic: "Lean into drama — intense emotion, internal and interpersonal conflict. Among the plausible options, pick whichever shakes the player's emotions the most.",
+    comedic: "Lean into comedy or playful mischief — light, lively situations that liven up the scene. Not everything needs to be heavy or serious every time.",
+    slow_burn: "Take it slow — favor small details and the gradual accumulation of feeling. Avoid pushing threads forward or resolving them too quickly.",
+    twist: "Always be looking for a chance to subvert the player's expectations. If a thread looks like it's heading somewhere predictable, pivot to something unexpected instead, while staying consistent with everything established so far.",
+    wholesome: "Lean into warmth and positive feeling. Pick events that build connection, comfort, or a smile. Avoid severe conflict or anything that would feel unsafe.",
+    high_stakes: "Lean into high stakes and heavy consequences. Pick events where something is genuinely on the line — physically, relationally, or to a character's standing — so each decision feels significant and hard to walk back.",
+    enigmatic: "Leave mysteries and unanswered clues hanging. Don't rush to explain or resolve things — favor events that raise questions over ones that hand out clear answers right away.",
 };
 
 function resolveDirectorPersonaKey(cfg) {
@@ -201,9 +201,9 @@ function buildPersonaNote(cfg) {
 }
 
 const NPC_FREQUENCY_NOTES = {
-    occasional: "ไม่จำเป็นต้องมี NPC ทุกครั้ง ให้มีเป็นบางโอกาสที่เข้ากับบริบทจริงๆ เท่านั้น",
-    frequent: "พยายามดึง NPC เข้ามาเกี่ยวข้องในเหตุการณ์บ่อยๆ เมื่อมีโอกาสเหมาะสม เพื่อให้โลกในเรื่องรู้สึกมีชีวิต แต่ไม่ต้องฝืนถ้าบริบทไม่เข้ากันจริงๆ",
-    almost_always: "เกือบทุกเหตุการณ์ควรมี NPC เข้ามาเกี่ยวข้องด้วยไม่ทางใดก็ทางหนึ่ง เว้นแต่ฉากตอนนี้จะเป็นช่วงส่วนตัวระหว่างตัวละครหลักล้วนๆ จริงๆ",
+    occasional: "NPCs don't need to appear every time — only when it genuinely fits the context.",
+    frequent: "Try to bring an NPC into events fairly often when there's a good opportunity, to keep the world feeling alive — but don't force it if the context genuinely doesn't fit.",
+    almost_always: "Almost every event should involve an NPC in some way, unless this scene is genuinely a private moment between the main characters only.",
 };
 
 const DEFAULT_CHAT_SETTINGS = () => ({
@@ -369,6 +369,7 @@ function getChatState() {
             lastProcessedMesId: -1,
             messagesSinceCheck: 0,
             forceNextCheck: false,
+            forceNextDiary: false,
             storyCalendar: null,
             globalMsgIndex: 0,
             diaryFilterCharacter: null,
@@ -397,6 +398,7 @@ function getChatState() {
     if (typeof state.lastProcessedMesId !== "number") state.lastProcessedMesId = -1;
     if (typeof state.messagesSinceCheck !== "number") state.messagesSinceCheck = 0;
     if (typeof state.forceNextCheck !== "boolean") state.forceNextCheck = false;
+    if (typeof state.forceNextDiary !== "boolean") state.forceNextDiary = false;
     if (typeof state.globalMsgIndex !== "number") state.globalMsgIndex = 0;
     if (state.diaryFilterCharacter === undefined) state.diaryFilterCharacter = null;
     if (state.diaryFilterDate === undefined) state.diaryFilterDate = null;
@@ -570,9 +572,9 @@ function buildGroundingBlock() {
 // Shared prompt notes
 
 const INTENSITY_NOTES = {
-    mild: "Keep it a small, low-key beat that fits smoothly into the current scene without derailing it.",
-    medium: "Make it a clear, noticeable development — enough that it actually changes what happens next, not just background color.",
-    disruptive: "Make it a real disruption to the current routine or status quo. Change the situation, location, stakes, or relationships in a way the characters cannot simply ignore or return to normal from right away.",
+    mild: "Keep it small and low-key, but still a specific, concrete beat — a real detail, object, or line that actually lands, not a vague mood shift. It should fit smoothly into the scene, but there must be something exact a reader could point to as \"this is what changed.\"",
+    medium: "Make it a clear, noticeable development that actually redirects what happens next — not scenery, not a passing remark. Something concrete must be different afterward: a decision made, a line crossed, information revealed, a relationship visibly shifted.",
+    disruptive: "Make it a genuine disruption to the current routine or status quo — something the characters cannot shrug off or quietly return to normal from. Change the situation, location, stakes, or relationships in a way that has real, lasting consequences for the scene. This should be the kind of thing that could not plausibly have happened just from the conversation drifting on its own — it needs to feel like a deliberate turn, not a coincidence.",
 };
 function getIntensityNote(cfg) { return INTENSITY_NOTES[cfg.eventIntensity] || INTENSITY_NOTES.medium; }
 
@@ -585,11 +587,12 @@ function getStyleNote(cfg) {
 }
 
 const ANTI_LEAK_NOTE = "Treat this as your own authorial choice for how the scene naturally continues, not an order from outside it — don't reference this note, mention any tool or app, or comment on having received directions of any kind.";
-const PACING_NOTE = "Treat this as an addition to your reply to {{user}}'s last message, not a replacement for it — respond to what they said and weave the event in without padding the reply's length just to fit it.";
+const PACING_NOTE = "Treat this as a real part of your reply to {{user}}'s last message, not a footnote tacked onto it — still respond to what they said, but give the event enough room to actually land and matter; don't shrink or soften it just to keep the reply short.";
 const COMPLETENESS_NOTE = "Make it a complete, self-contained beat: a clear trigger, a concrete development, and something that actually happens on the page.";
+const ANTI_GENERIC_NOTE = "Make it specific and concrete — a particular action, object, word, or decision that actually happens, not a vague description of mood or atmosphere. Avoid the blandest, most predictable version of the idea — pick the version a generic, on-autopilot continuation of this scene would NOT have produced on its own.";
 
 function buildEventInjectionText(cfg, detail) {
-    return `Scene direction: let this shape what happens next in the story: ${detail}. ${getIntensityNote(cfg)} ${getStyleNote(cfg)} ${PACING_NOTE} ${COMPLETENESS_NOTE} ${ANTI_LEAK_NOTE}${buildGroundingBlock()}`;
+    return `Scene direction: let this shape what happens next in the story: ${detail}. ${getIntensityNote(cfg)} ${ANTI_GENERIC_NOTE} This must leave the story somewhere genuinely different than before this turn — a relationship, a character, or the stakes should have visibly moved, not just been mentioned in passing. ${getStyleNote(cfg)} ${PACING_NOTE} ${COMPLETENESS_NOTE} ${ANTI_LEAK_NOTE}${buildGroundingBlock()}`;
 }
 
 const TIME_UNIT_LABEL_TH = { hour: "ชั่วโมง", day: "วัน", week: "สัปดาห์" };
@@ -714,7 +717,7 @@ function buildStagnationNote(cfg, state) {
     combined.forEach((t) => { counts[t.vibe] = (counts[t.vibe] || 0) + 1; });
     const [topVibe, topCount] = Object.entries(counts).sort((a, b) => b[1] - a[1])[0];
     if (topCount < 3) return "";
-    return `\n\nสังเกต: เธรด ${topCount} จาก ${combined.length} เธรดล่าสุดใช้อารมณ์/ธีมแบบ "${topVibe}" ซ้ำกัน ถ้าตอนนี้จะเปิดเธรดใหม่ (action "open_new") ให้พยายามเลือก vibe อื่นที่ไม่ใช่ "${topVibe}" เพื่อไม่ให้เรื่องจำเจ เว้นแต่จังหวะเรื่องตอนนี้จะเข้ากับ "${topVibe}" มากจริงๆ เท่านั้น`;
+    return `\n\nNote: ${topCount} of the last ${combined.length} threads shared the "${topVibe}" vibe/theme. If you're opening a new thread this turn (action "open_new"), try to pick a different vibe than "${topVibe}" to avoid repetition, unless the current story moment genuinely calls for "${topVibe}" specifically.`;
 }
 
 // NPC roster block — lists user-authored suggestions plus anyone already
@@ -725,10 +728,10 @@ function buildNpcRosterBlock(cfg, state) {
     const rosterNames = new Set((cfg.npcRoster || []).map((n) => n.name));
     const seenLines = (state.npcRegistry || [])
         .filter((n) => !rosterNames.has(n.name))
-        .map((n) => `- ${n.name} (เคยปรากฏในเรื่องแล้ว)`);
+        .map((n) => `- ${n.name} (already appeared in the story)`);
     const allLines = [...rosterLines, ...seenLines];
     const freqNote = NPC_FREQUENCY_NOTES[cfg.npcFrequency] || NPC_FREQUENCY_NOTES.frequent;
-    return `\n\nตัวละครสมทบ (NPC) ที่มีในเรื่อง:\n${allLines.length ? allLines.join("\n") : "(ยังไม่มีใครถูกตั้งชื่อไว้)"}\n${freqNote} ถ้าเหตุการณ์นี้มี NPC เกี่ยวข้อง ให้เลือกจากรายชื่อข้างต้นก่อนเป็นอันดับแรกถ้าเข้ากับบริบท ถ้าไม่มีใครเหมาะเลยจะแต่ง NPC ใหม่ขึ้นมาก็ได้ ใส่ชื่อ (ใหม่หรือเดิม) ลงในฟิลด์ "npcName" ถ้าเหตุการณ์นี้ไม่มี NPC เกี่ยวข้องเลยให้ใส่ null ถ้าเหตุการณ์นี้เกี่ยวพันกับ NPC อีกคนพร้อมกันจนกระทบความสัมพันธ์ระหว่างสองคนนั้นเอง (ไม่ใช่กับผู้เล่น) ให้ใส่ชื่อคนที่สองในฟิลด์ "npcRelationshipPartner" พร้อม "npcRelationshipDelta" ไม่งั้นใส่ null ทั้งคู่`;
+    return `\n\nSupporting characters (NPCs) established in this story:\n${allLines.length ? allLines.join("\n") : "(no one named yet)"}\n${freqNote} If this event involves an NPC, prefer someone from the list above when they fit the context; if no one fits, you may invent a new NPC. Put the name (new or existing) in the "npcName" field, or null if no NPC is involved at all. If this event involves a second NPC in a way that affects the relationship between those two NPCs themselves (not with the player), put the second person's name in "npcRelationshipPartner" along with "npcRelationshipDelta"; otherwise set both to null.`;
 }
 
 // Future letters — user writes a note to a character now, picks an in-story
@@ -746,9 +749,9 @@ function getDueLetters(cfg, state) {
     });
 }
 function buildLetterInjectionText(letters) {
-    const parts = letters.map((l) => `จดหมายจากผู้เล่นถึง ${l.toCharacter}:\n"${l.body}"`).join("\n\n");
+    const parts = letters.map((l) => `Letter from the player to ${l.toCharacter}:\n"${l.body}"`).join("\n\n");
     const names = Array.from(new Set(letters.map((l) => l.toCharacter))).join(", ");
-    return `[จดหมายมาถึงพอดีในวันนี้]\n${parts}\n\nให้ ${names} เปิดอ่านจดหมายฉบับนี้และแสดงปฏิกิริยา/ตอบสนองต่อเนื้อหาข้างต้นอย่างเป็นธรรมชาติในฉากนี้`;
+    return `[A letter arrives exactly today]\n${parts}\n\nHave ${names} open and read this letter, and react/respond to its contents naturally within this scene.`;
 }
 function renderScheduledLettersRows(state) {
     if (!state.scheduledLetters.length) return `<div class="sd-help" style="margin:2px 0;">(ยังไม่มีจดหมายที่ตั้งเวลาไว้)</div>`;
@@ -771,11 +774,11 @@ function buildSpecialDatesBlock(cfg, state) {
         const target = new Date(d.date);
         if (isNaN(target.getTime())) return null;
         const diffDays = Math.round((target - now) / 86400000);
-        const when = diffDays === 0 ? "คือวันนี้" : diffDays > 0 ? `อีก ${diffDays} วัน` : `ผ่านมาแล้ว ${Math.abs(diffDays)} วัน`;
+        const when = diffDays === 0 ? "is today" : diffDays > 0 ? `in ${diffDays} day(s)` : `${Math.abs(diffDays)} day(s) ago`;
         return `- "${d.label}" (${formatThaiDate(d.date)}, ${when})`;
     }).filter(Boolean);
     if (!lines.length) return "";
-    return `\n\nวันสำคัญที่ผู้เล่นตั้งไว้ (อ้างอิงได้ถ้าเข้ากับจังหวะเรื่อง ไม่บังคับต้องใช้):\n${lines.join("\n")}`;
+    return `\n\nSpecial dates the player has set (reference them if it fits the story's pacing — not mandatory):\n${lines.join("\n")}`;
 }
 
 function buildDormantBlock(cfg, state) {
@@ -783,32 +786,32 @@ function buildDormantBlock(cfg, state) {
     const recentList = [];
     const olderList = [];
     state.dormantThreads.slice(-Math.max(1, cfg.dormantMemory || 6)).forEach((t) => {
-        const line = `- "${t.title}" (ปิดไปแล้ว: ${t.beats[t.beats.length - 1]?.summary || t.originSummary})`;
+        const line = `- "${t.title}" (closed: ${t.beats[t.beats.length - 1]?.summary || t.originSummary})`;
         if (typeof t.closedAtIndex === "number" && t.closedAtIndex > cutoff) recentList.push(line);
         else olderList.push(line);
     });
     let text = "";
-    if (recentList.length) text += `เพิ่งปิดไปไม่นาน (ห้ามเปิดเธรดใหม่ที่มีธีม/ประเด็นใกล้เคียงกับสิ่งเหล่านี้):\n${recentList.join("\n")}`;
-    if (olderList.length) text += `${text ? "\n\n" : ""}ปิดไปนานแล้ว (พอเป็นความทรงจำ ไม่จำเป็นต้องเลี่ยงเข้มงวดเท่าอันบน แต่ยังไม่ควรหยิบมาเปิดซ้ำแบบเป๊ะๆ):\n${olderList.join("\n")}`;
-    return text || "(ไม่มี)";
+    if (recentList.length) text += `Recently closed (do not open a new thread with a theme/issue close to these):\n${recentList.join("\n")}`;
+    if (olderList.length) text += `${text ? "\n\n" : ""}Closed a while ago (fine as background memory, doesn't need to be avoided as strictly as the ones above, but still shouldn't be reopened near-verbatim):\n${olderList.join("\n")}`;
+    return text || "(none)";
 }
 
 function buildCharacterChoiceBlock() {
     const names = getGroupMemberNames();
     if (!names || names.length < 2) return "";
-    return `\n\nนี่คือแชทกลุ่ม มีตัวละคร: ${names.join(", ")}\nสำหรับเธรดที่เปิดใหม่หรือดันคืบ ให้ระบุในฟิลด์ "characterName" ว่าเรื่องนี้เน้นไปที่ตัวละครคนไหนเป็นหลัก (เลือกจากชื่อด้านบนเท่านั้น)`;
+    return `\n\nThis is a group chat with characters: ${names.join(", ")}\nFor a newly opened or advanced thread, specify in the "characterName" field which character this thread mainly centers on (choose only from the names above).`;
 }
 
 function buildLinkedNote(activeThreads, t) {
     if (!Array.isArray(t.linkedThreadIds) || !t.linkedThreadIds.length) return "";
     const names = t.linkedThreadIds.map((id) => activeThreads.find((x) => x.id === id)?.title).filter(Boolean);
-    return names.length ? ` (เชื่อมโยงกับ: ${names.join(", ")})` : "";
+    return names.length ? ` (linked to: ${names.join(", ")})` : "";
 }
 
 function buildEventPoolBlock(cfg) {
     if (!Array.isArray(cfg.eventPool) || !cfg.eventPool.length) return "";
     const lines = cfg.eventPool.map((p) => `- [id: ${p.id}] "${p.title}" — ${p.detail}`).join("\n");
-    return `\n\nคลังเหตุการณ์ที่ผู้เล่นเตรียมไว้ล่วงหน้า (สำคัญ: ถ้า action คือ "open_new" ให้พิจารณาเลือกจากคลังนี้ก่อนเป็นอันดับแรกเสมอ ตราบใดที่ยังมีตัวเลือกเหลืออยู่ — เลือกอันที่เข้ากับจังหวะเรื่องตอนนี้ที่สุด แล้วใส่ id ของอันนั้นใน field "poolEventId" ค่อยคิดเรื่องใหม่เองก็ต่อเมื่อไม่มีอันไหนเข้ากับบริบทจริงๆ เท่านั้น แล้วใส่ poolEventId เป็น null):\n${lines}`;
+    return `\n\nEvent pool the player pre-authored (important: if action is "open_new", always consider picking from this pool first as long as options remain — pick whichever fits the current story pacing best, and put that entry's id in the "poolEventId" field; only invent your own new event when nothing in the pool genuinely fits the context, and then set poolEventId to null):\n${lines}`;
 }
 
 // Secrets — pre-authored (or Director-invented) hidden facts about a
@@ -817,15 +820,15 @@ function buildEventPoolBlock(cfg) {
 function buildSecretsBlock(cfg, state) {
     if (!cfg.secretsEnabled) return "";
     const active = (state.secrets || []).filter((s) => s.status === "active");
-    const activeLines = active.map((s) => `- [id: ${s.id}] ${s.characterName} — เนื้อหาจริง: "${s.text}" (ปล่อยเบาะแสไปแล้ว ${s.cluesGiven.length} ครั้ง)`);
-    const poolLines = (cfg.secretsPool || []).map((p) => `- [id: ${p.id}] ${p.characterName}${p.text ? `: "${p.text}"` : " (ผู้เล่นยังไม่ได้เขียนเนื้อหาไว้ — ถ้าเลือกใช้ ให้คุณแต่งเนื้อหาความลับขึ้นเองใส่ใน \"secretGeneratedText\")"}`);
+    const activeLines = active.map((s) => `- [id: ${s.id}] ${s.characterName} — actual content: "${s.text}" (clues dropped so far: ${s.cluesGiven.length})`);
+    const poolLines = (cfg.secretsPool || []).map((p) => `- [id: ${p.id}] ${p.characterName}${p.text ? `: "${p.text}"` : " (player hasn't written content for this one — if you use it, invent the content yourself and put it in \"secretGeneratedText\")"}`);
     if (!activeLines.length && !poolLines.length) return "";
-    return `\n\nความลับของตัวละคร (Secrets):
-กำลังดำเนินอยู่ (ยังไม่เฉลย — ห้ามให้ตัวละครพูดเนื้อหาจริงออกมาตรงๆ):
-${activeLines.length ? activeLines.join("\n") : "(ไม่มี)"}
-เตรียมไว้แต่ยังไม่เริ่ม:
-${poolLines.length ? poolLines.join("\n") : "(ไม่มี)"}
-กติกา: ถ้าเหตุการณ์ตานี้เหมาะจะปล่อยเบาะแสหรือเฉลยความลับที่ "กำลังดำเนินอยู่" อันใดอันหนึ่ง ให้ใส่ id ใน "secretId" พร้อมเบาะแสสั้นๆ ที่แค่ชวนสงสัยใน "secretClueSummary" (ห้ามเฉลยเนื้อหาทั้งหมดในเบาะแส) และตั้ง "secretReveal": true เฉพาะตอนสะสมเบาะแสมาพอสมควรแล้วและจังหวะเรื่องสุกงอมจริงๆ เท่านั้น (ไม่ควรรีบเฉลยเร็วเกินไป) ถ้าจะเริ่มความลับใหม่จากรายการ "เตรียมไว้" ตานี้ ให้ใส่ id ใน "secretPoolId" ถ้าตานี้ไม่เกี่ยวกับความลับเลย ใส่ null ทั้งหมด`;
+    return `\n\nCharacter secrets:
+Currently ongoing (not yet revealed — never let the character state the actual content outright):
+${activeLines.length ? activeLines.join("\n") : "(none)"}
+Prepared but not started yet:
+${poolLines.length ? poolLines.join("\n") : "(none)"}
+Rules: if this turn's event is a good moment to drop a clue about, or reveal, one of the "currently ongoing" secrets, put its id in "secretId" along with a short, merely-suggestive clue in "secretClueSummary" (never reveal the full content in the clue), and only set "secretReveal": true once enough clues have genuinely built up and the story's pacing is truly ripe for it (don't reveal too early). If you want to start a new secret from the "prepared" list this turn, put its id in "secretPoolId". If this turn has nothing to do with any secret, set everything to null.`;
 }
 
 // Callback — surfaces small, half-forgotten details from long-closed
@@ -835,14 +838,14 @@ function buildCallbackBlock(cfg, state) {
     const cutoff = (state.globalMsgIndex || 0) - Math.max(5, cfg.callbackMinAge || 20);
     const threadCandidates = (state.dormantThreads || [])
         .filter((t) => typeof t.closedAtIndex === "number" && t.closedAtIndex < cutoff)
-        .map((t) => `- [id: thread:${t.id}] เธรดเก่า "${t.title}" — ${truncateText(t.beats[t.beats.length - 1]?.summary || t.originSummary, 140)}`);
+        .map((t) => `- [id: thread:${t.id}] old thread "${t.title}" — ${truncateText(t.beats[t.beats.length - 1]?.summary || t.originSummary, 140)}`);
     const diaryCandidates = (state.diaryLog || [])
         .filter((e) => typeof e.atGlobalIndex === "number" && e.atGlobalIndex < cutoff)
-        .map((e) => `- [id: diary:${e.id}] ไดอารี่เก่าของ ${e.characterName} — ${truncateText(String(e.body || "").replace(/[=~_`]/g, ""), 140)}`);
+        .map((e) => `- [id: diary:${e.id}] old diary entry from ${e.characterName} — ${truncateText(String(e.body || "").replace(/[=~_`]/g, ""), 140)}`);
     const pool = [...threadCandidates, ...diaryCandidates];
     if (!pool.length) return "";
     const sample = pool.length > 6 ? pickRandomSample(pool, 6) : pool;
-    return `\n\nรายละเอียดเก่าที่พอจะหยิบมา "callback" ได้ (ผู้เล่นอาจลืมไปแล้ว เช่น ของที่เคยพูดถึงผ่านๆ หรือคำสัญญาเก่า):\n${sample.join("\n")}\nถ้าเหตุการณ์ตานี้เหมาะจะหยิบรายละเอียดเก่าอันใดอันหนึ่งกลับมาโผล่แบบไม่ทันตั้งตัว (ไม่บังคับ ใช้เฉพาะตอนเข้ากับจังหวะจริงๆ) ให้ใส่ id ของอันนั้นใน "callbackId" แล้วสอดแทรกไว้ใน "detail" ไม่งั้นใส่ callbackId เป็น null`;
+    return `\n\nOld details available to "callback" on (the player may have forgotten these — e.g. something mentioned in passing, or an old promise):\n${sample.join("\n")}\nIf this turn's event is a good fit to bring one of these old details back unexpectedly (optional — only use it when it genuinely fits the pacing), put that entry's id in "callbackId" and weave it into "detail"; otherwise set callbackId to null.`;
 }
 
 // Story Arcs — a season-length plan (several beats, a name, a planned
@@ -852,76 +855,97 @@ function buildArcBlock(cfg, state) {
     if (!cfg.storyArcsEnabled) return "";
     const arc = state.currentArc;
     if (arc && arc.status === "active") {
-        return `\n\nอาร์คเรื่องปัจจุบัน: "${arc.title}" (ผ่านมาแล้ว ${arc.beatsCount || 0}/${arc.targetLength} เหตุการณ์)\nจุดไคลแมกซ์ที่วางแผนไว้: ${arc.climaxNote || "(ยังไม่ระบุรายละเอียด)"}\nพยายามให้เหตุการณ์ที่เลือกตานี้เป็นส่วนหนึ่งของอาร์คนี้ (ไม่จำเป็นต้องเป็นเธรดเดียวกันทุกครั้ง แค่ให้เข้ากับทิศทางของอาร์ค) ยิ่งใกล้ครบจำนวนเป้าหมายยิ่งควรดันเรื่องเข้าใกล้จุดไคลแมกซ์ที่วางไว้ ถ้าตานี้คือจุดจบของอาร์ค (ถึงจุดไคลแมกซ์แล้วจริงๆ) ให้ตั้ง "arcComplete": true ไม่งั้นใส่ false`;
+        return `\n\nCurrent story arc: "${arc.title}" (${arc.beatsCount || 0}/${arc.targetLength} events so far)\nPlanned climax: ${arc.climaxNote || "(not specified yet)"}\nTry to make the event you pick this turn part of this arc (it doesn't have to be the same thread every time, just fit the arc's direction). The closer it gets to the target count, the more the event should push the story toward the planned climax. If this turn is the arc's actual endpoint (the climax has genuinely been reached), set "arcComplete": true; otherwise false.`;
     }
-    return `\n\nยังไม่มีอาร์คเรื่องที่กำลังดำเนินอยู่ ถ้าตานี้เป็นจังหวะที่เหมาะจะเริ่มอาร์คใหม่ (เช่น เพิ่งปิดอาร์คก่อนหน้าไป หรือยังไม่เคยมีอาร์คเลย) ให้วางแผนอาร์คใหญ่คร่าวๆ ล่วงหน้า: ตั้งชื่ออาร์คใน "arcTitle", จำนวนเหตุการณ์เป้าหมายระหว่าง ${cfg.arcMinLength}-${cfg.arcMaxLength} ใน "arcTargetLength", และแนวทางจุดไคลแมกซ์ที่วางแผนไว้ใน "arcClimaxNote" ไม่บังคับต้องเริ่มทันทีตานี้ ถ้ายังไม่ถึงจังหวะให้ใส่ null ทั้งสามฟิลด์`;
+    return `\n\nNo story arc is currently active. If this is a good moment to start a new one (e.g. the previous arc just closed, or there's never been one), plan a rough new arc ahead of time: give it a name in "arcTitle", a target event count between ${cfg.arcMinLength}-${cfg.arcMaxLength} in "arcTargetLength", and a rough planned climax direction in "arcClimaxNote". Its premise must be genuinely distinct from every thread already listed as currently open above — never just a bigger wrapper around one of them. You don't have to start it this very turn — if it's not the right moment yet, set all three fields to null.`;
 }
 
-function buildDirectorPrompt(cfg, state, forcedThread) {
+function buildDirectorPrompt(cfg, state, forcedThread, diaryAdvanceRoll) {
     const activeThreads = state.activeThreads;
     const threadBlock = activeThreads.length
-        ? activeThreads.map((t, i) => `${i + 1}. [${t.status}]${t.pinned ? " [ปักหมุด]" : ""}${t.characterName ? ` [${t.characterName}]` : ""} "${t.title}"${buildLinkedNote(activeThreads, t)} (ความเข้มข้นสะสม: ${t.emotionalCharge}/100)\n   ล่าสุด: ${t.beats[t.beats.length - 1]?.summary || t.originSummary}`).join("\n")
-        : "(ยังไม่มีเธรดที่ค้างอยู่)";
+        ? activeThreads.map((t, i) => `${i + 1}. [${t.status}]${t.pinned ? " [pinned]" : ""}${t.characterName ? ` [${t.characterName}]` : ""} "${t.title}"${buildLinkedNote(activeThreads, t)} (accumulated intensity: ${t.emotionalCharge}/100)\n   Latest: ${t.beats[t.beats.length - 1]?.summary || t.originSummary}`).join("\n")
+        : "(no open threads yet)";
 
     const dormantBlock = buildDormantBlock(cfg, state);
 
-    const tagList = cfg.tags.length ? cfg.tags.join(", ") : "อิสระตามโทนเรื่องปัจจุบัน";
+    const tagList = cfg.tags.length ? cfg.tags.join(", ") : "free — follow the story's current tone";
     const transcript = getRecentChatTranscript(12);
 
     const forcedIndex = forcedThread ? activeThreads.findIndex((t) => t.id === forcedThread.id) + 1 : 0;
     const forcedNote = forcedThread
-        ? `\n\nสำคัญที่สุด: เธรด "${forcedThread.title}" (ลำดับที่ ${forcedIndex} ในลิสต์ด้านบน) ถึงคิว follow-up ที่ตั้งไว้แล้ว ตานี้ต้องต่อเธรดนี้เท่านั้น action ต้องเป็น "advance" และ threadIndex ต้องเป็น ${forcedIndex} เสมอ ห้ามเลือกเธรดอื่นหรือ action อื่นในตานี้`
+        ? `\n\nMost important: the thread "${forcedThread.title}" (item ${forcedIndex} in the list above) has a follow-up due. This turn must advance this thread only — action must be "advance" and threadIndex must always be ${forcedIndex}. Do not pick a different thread or a different action this turn.`
         : "";
 
     const timeSkipActionLine = cfg.timeSkipEnabled ? ` | "time_skip"` : "";
     const timeSkipGuidance = cfg.timeSkipEnabled && !forcedThread
-        ? `\n- ใช้ action "time_skip" เมื่อฉากปัจจุบันจบลงเป็นธรรมชาติแล้ว และการข้ามเวลาไปข้างหน้าจะทำให้เรื่องน่าติดตามกว่าการดันต่อทันที (ไม่ควรใช้บ่อย นานๆ ครั้งพอ) ถ้าเลือก action นี้ ให้ใส่ timeSkipAmount กับ timeSkipUnit ด้วย ส่วน threadIndex/title/characterName ใส่ null`
+        ? `\n- Use action "time_skip" once the current scene has reached a natural stopping point and jumping forward in time would make the story more engaging than pushing it right along (don't use this often — sparingly). If you pick this action, also fill in timeSkipAmount and timeSkipUnit, and set threadIndex/title/characterName to null.`
         : "";
     const timeSkipFields = cfg.timeSkipEnabled
-        ? `,\n  "timeSkipAmount": <ตัวเลขจำนวน ${`{hour|day|week}`} ที่จะข้าม ใส่เฉพาะตอน action เป็น "time_skip" ไม่งั้นใส่ null>,\n  "timeSkipUnit": "hour" | "day" | "week" | null`
+        ? `,\n  "timeSkipAmount": <number of {hour|day|week} to skip forward, only when action is "time_skip", otherwise null>,\n  "timeSkipUnit": "hour" | "day" | "week" | null`
         : "";
-    const bondFields = cfg.bondTrackingEnabled ? `,\n  "bondDelta": <ตัวเลข -10 ถึง 10 บอกว่าเหตุการณ์นี้ทำให้ความผูกพันระหว่างตัวละครที่เกี่ยวข้องกับผู้เล่นดีขึ้นหรือแย่ลงแค่ไหน ใส่ 0 ถ้าไม่กระทบ ไม่ต้องใส่ตอน action เป็น "time_skip" หรือ "none">` : "";
-    const vibeField = cfg.antiStagnationEnabled ? `,\n  "vibe": "<เลือกจาก: ${VIBE_TAGS.join(" | ")} — เฉพาะตอน action เป็น "open_new", ไม่งั้นใส่ null>"` : "";
-    const npcFields = cfg.npcEventsEnabled ? `,\n  "npcName": "<ชื่อ NPC ที่เกี่ยวข้องกับเหตุการณ์นี้ หรือ null ถ้าไม่มี NPC เกี่ยวข้อง>",\n  "npcRelationshipPartner": "<ชื่อ NPC อีกคน ถ้าเหตุการณ์นี้กระทบความสัมพันธ์ระหว่าง NPC สองคนนี้เอง ไม่งั้น null>",\n  "npcRelationshipDelta": <ตัวเลข -10 ถึง 10 ใช้คู่กับ npcRelationshipPartner เท่านั้น ไม่งั้น null>` : "";
-    const secretsFields = cfg.secretsEnabled ? `,\n  "secretPoolId": "<id จากรายการ \"เตรียมไว้แต่ยังไม่เริ่ม\" ถ้าจะเริ่มความลับใหม่ตานี้ ไม่งั้น null>",\n  "secretGeneratedText": "<ถ้า secretPoolId ที่เลือกยังไม่มีเนื้อหา ให้แต่งเนื้อหาความลับขึ้นเองใส่ตรงนี้ ไม่งั้น null>",\n  "secretId": "<id ของความลับที่ \"กำลังดำเนินอยู่\" ถ้าตานี้จะปล่อยเบาะแสหรือเฉลย ไม่งั้น null>",\n  "secretClueSummary": "<เบาะแสสั้นๆ ที่ปล่อยตานี้ ใส่เฉพาะตอนมี secretId ไม่งั้น null>",\n  "secretReveal": <true ถ้าตานี้คือจุดเฉลยความลับทั้งหมด ไม่งั้น false>` : "";
-    const callbackFields = cfg.callbackEnabled ? `,\n  "callbackId": "<id ของรายละเอียดเก่าที่หยิบมาใช้ตานี้ ถ้ามี ไม่งั้น null>"` : "";
-    const arcFields = cfg.storyArcsEnabled ? `,\n  "arcTitle": "<ชื่ออาร์คใหม่ เฉพาะตอนยังไม่มีอาร์คที่ดำเนินอยู่และจะเริ่มตานี้ ไม่งั้น null>",\n  "arcTargetLength": <จำนวนเหตุการณ์เป้าหมาย ${cfg.arcMinLength}-${cfg.arcMaxLength} เฉพาะตอนตั้งอาร์คใหม่ ไม่งั้น null>,\n  "arcClimaxNote": "<แนวทางจุดไคลแมกซ์ที่วางแผนไว้คร่าวๆ เฉพาะตอนตั้งอาร์คใหม่ ไม่งั้น null>",\n  "arcComplete": <true ถ้าตานี้คือจุดจบของอาร์คปัจจุบัน (เฉพาะตอนมีอาร์คที่ดำเนินอยู่แล้ว) ไม่งั้น false>` : "";
+    const bondFields = cfg.bondTrackingEnabled ? `,\n  "bondDelta": <number -10 to 10, how much this event improves or worsens the bond between the involved character(s) and the player; use 0 if no effect; omit/null when action is "time_skip" or "none">` : "";
+    const vibeField = cfg.antiStagnationEnabled ? `,\n  "vibe": "<pick one of: ${VIBE_TAGS.join(" | ")} — only when action is \"open_new\", otherwise null>"` : "";
+    const npcFields = cfg.npcEventsEnabled ? `,\n  "npcName": "<name of the NPC involved in this event, or null if none is involved>",\n  "npcRelationshipPartner": "<name of a second NPC, only if this event affects the relationship between these two NPCs themselves, otherwise null>",\n  "npcRelationshipDelta": <number -10 to 10, used only together with npcRelationshipPartner, otherwise null>` : "";
+    const secretsFields = cfg.secretsEnabled ? `,\n  "secretPoolId": "<id from the \"prepared but not started\" list, if starting a new secret this turn, otherwise null>",\n  "secretGeneratedText": "<if the chosen secretPoolId has no content written yet, invent the secret's content here yourself, otherwise null>",\n  "secretId": "<id of a \"currently ongoing\" secret, if this turn drops a clue about it or reveals it, otherwise null>",\n  "secretClueSummary": "<the short clue dropped this turn, only when secretId is set, otherwise null>",\n  "secretReveal": <true if this turn is the point where the secret is fully revealed, otherwise false>` : "";
+    const callbackFields = cfg.callbackEnabled ? `,\n  "callbackId": "<id of the old detail reused this turn, if any, otherwise null>"` : "";
+    const arcFields = cfg.storyArcsEnabled ? `,\n  "arcTitle": "<name for a new arc, only if none is currently active and you're starting one this turn, otherwise null>",\n  "arcTargetLength": <target event count between ${cfg.arcMinLength}-${cfg.arcMaxLength}, only when starting a new arc, otherwise null>,\n  "arcClimaxNote": "<rough planned climax direction, only when starting a new arc, otherwise null>",\n  "arcComplete": <true if this turn is the endpoint of the current arc (only relevant when an arc is already active), otherwise false>` : "";
 
-    return `คุณคือ "Story Director" ของแชท roleplay เรื่องหนึ่ง หน้าที่ของคุณคือดูแลไม่ให้เรื่องนิ่งจนน่าเบื่อ โดยตัดสินใจแต่ละครั้งว่าจะทำอะไรกับ "เธรด" (ปมเรื่อง/ความสัมพันธ์ที่ยังค้างอยู่) ต่อไปนี้
+    // Diary is folded into this same call (one API request per turn, not two):
+    // whether one is required is fully determined by this turn's own "action"
+    // field, plus — only for the "advance" case, since that one is genuinely
+    // random — a coin flip made before this prompt was even built.
+    const diaryBlock = cfg.diaryEnabled ? `\n\nDiary entry for this turn:
+A diary entry from the character this event centers on is REQUIRED this turn if your action ends up being "open_new" or "peak_and_close". ${diaryAdvanceRoll ? "It is ALSO required this turn even if your action is \"advance\"." : "If your action is \"advance\", do NOT write a diary entry this turn — leave every diary field null."} Never write one when action is "time_skip" or "none".
+When a diary entry is required, write it in that character's own first-person voice, in Thai, as a private diary entry no one else will ever read, reflecting on what "detail" above describes and this thread's history so far:
+${buildDiarySkillNote()}
+Put the result in "diaryBody", along with "diaryMood" (a single Thai word for the dominant emotion), "diaryWeatherText" (a short Thai weather description matching the mood), and "diaryTemperature" (a number, degrees Celsius). If no diary entry is required this turn, set all four of these fields to null.` : "";
+    const diaryFields = cfg.diaryEnabled ? `,\n  "diaryMood": "<single Thai word for the dominant emotion, only when a diary entry is required this turn per the rule above, otherwise null>",\n  "diaryWeatherText": "<short Thai weather description matching the mood, only when required, otherwise null>",\n  "diaryTemperature": <number in Celsius, only when required, otherwise null>,\n  "diaryBody": "<the full diary entry in Thai following the style rules above, only when required this turn, otherwise null>"` : "";
 
-โทนการตัดสินใจของคุณรอบนี้: ${buildPersonaNote(cfg)}
+    return `You are the "Story Director" for a roleplay chat. Your job is to keep the story from going stale, by deciding each time what happens with the "threads" below — the open plot points or relationship arcs currently in play.
 
-เธรดที่กำลังดำเนินอยู่:
+Decision tone for this turn: ${buildPersonaNote(cfg)}
+
+Target intensity for what you decide happens this turn: ${getIntensityNote(cfg)} This intensity level must shape the actual substance of what you decide — not just how it later gets narrated. A "mild" turn and a "disruptive" turn should read as genuinely different events, not the same event described differently.
+
+${ANTI_GENERIC_NOTE} A player who has this system enabled should be able to tell the difference between a turn where it fired and a turn where it didn't — if your "detail" reads like something that would have happened in this chat anyway with no system behind it, it has failed its job.
+
+Forward progress is mandatory at every intensity level, mild included: a mild event is smaller in scope, but it is never an excuse to just maintain the status quo — something must genuinely move. Let the allowed themes ("${tagList}") decide what "forward" means here: if romance is one of them, progress should mean the characters' relationship itself visibly shifts — closer, more tense, a confession, jealousy, a new kind of intimacy — not another cute moment that changes nothing between them; if adventure/action/fantasy/RPG-style themes are present, progress should mean a character grows, faces a real consequence, or a relationship with an ally/rival/mentor develops through the challenge itself. Every event also needs its own hook — a specific twist, complication, or detail that makes it interesting on its own terms, not just an ordinary day happening to the characters. And it must be genuinely new: don't restate, rehash, or lightly reskin something already established or already played out in this conversation or in the threads above.
+
+Currently open threads:
 ${threadBlock}
 
-เธรดที่ปิดไปแล้ว:
+Closed threads:
 ${dormantBlock}
 
-ธีมที่อนุญาต: ${tagList}${buildCharacterChoiceBlock()}${buildSpecialDatesBlock(cfg, state)}${buildEventPoolBlock(cfg)}${buildNpcRosterBlock(cfg, state)}${buildStagnationNote(cfg, state)}${buildSecretsBlock(cfg, state)}${buildCallbackBlock(cfg, state)}${buildArcBlock(cfg, state)}
+Allowed themes: ${tagList}${buildCharacterChoiceBlock()}${buildSpecialDatesBlock(cfg, state)}${buildEventPoolBlock(cfg)}${buildNpcRosterBlock(cfg, state)}${buildStagnationNote(cfg, state)}${buildSecretsBlock(cfg, state)}${buildCallbackBlock(cfg, state)}${buildArcBlock(cfg, state)}${buildGroundingBlock()}${diaryBlock}
 
-บทสนทนาล่าสุด:
-${transcript || "(ไม่มี)"}
+Recent conversation:
+${transcript || "(none)"}
 
-กติกาการตัดสินใจ:
-- ถ้ามีเธรดค้างอยู่แล้ว ให้เอนเอียงไปทาง "ดันเธรดเดิม" มากกว่าเปิดใหม่ (สูงสุด ${cfg.maxActiveThreads} เธรดพร้อมกัน)
-- เธรดที่ emotionalCharge ใกล้ 100 ควรถูกดันไปที่ peak แล้วปิด ไม่ปล่อยค้างเรื่อยๆ
-- ถ้าไม่มีเธรดค้างเลย หรือทุกเธรดเพิ่งขยับไปเมื่อกี้ ให้เปิดเธรดใหม่ 1 อัน
-- ห้ามเปิดเธรดที่ซ้ำ/คล้ายกับเธรดที่ปิดไปแล้วด้านบน โดยเฉพาะกลุ่ม "เพิ่งปิดไปไม่นาน"
-- เธรดที่มีเครื่องหมาย [ปักหมุด] ผู้เล่นต้องการให้เน้นเป็นพิเศษ ให้เอนเอียงไปทางดันเธรดนั้นก่อนเธรดอื่นที่ไม่ได้ปักหมุด เว้นแต่จังหวะบทสนทนาล่าสุดจะไม่เหมาะสมกับเธรดนั้นจริงๆ
-- เธรดที่มี "(เชื่อมโยงกับ: ...)" ต่อท้าย ถือว่าเกี่ยวพันกับเธรดที่ระบุไว้ พิจารณาความเชื่อมโยงนี้ประกอบตอนตัดสินใจว่าเหตุการณ์ในเธรดหนึ่งอาจกระทบอีกเธรดได้
-- action "none" ใช้เมื่อบทสนทนาล่าสุดกำลังมีจังหวะดีอยู่แล้ว ไม่จำเป็นต้องแทรกอะไรตานี้
-- ประเมิน timeElapsedHint ตามบริบทฉากปัจจุบันตามจริง อย่าข้ามเวลาพร่ำเพรื่อ${timeSkipGuidance}${forcedNote}
+Decision rules:
+- If a thread is already open, lean toward advancing it rather than opening a new one (max ${cfg.maxActiveThreads} active threads at once).
+- A thread with emotionalCharge near 100 should be pushed to its peak and closed — don't leave it hanging indefinitely.
+- If there are no open threads at all, or every thread just moved a moment ago, open exactly 1 new thread.
+- Never open a thread that duplicates or closely resembles a thread already closed above, especially the "recently closed" group, or a beat already covered earlier in the same thread.
+- Never open a thread, or start a new story arc, whose theme or premise duplicates or closely resembles a thread already listed as currently open above — that's what "advance" on the existing thread is for instead.
+- Draw on the established facts above (character card, persona, active lorebook/World Info entries) when deciding what happens — a scenario is strongest when it grows out of something already true about this world or character, not invented from nothing.
+- A thread marked [pinned] is something the player specifically wants emphasized — lean toward advancing it ahead of non-pinned threads, unless the recent conversation's pacing genuinely doesn't fit it right now.
+- A thread with "(linked to: ...)" trailing it is connected to the named thread(s) — factor that connection in when deciding whether an event in one thread could spill over into the other.
+- Every "advance" or "open_new" must leave something changed by the end of it — a relationship, a piece of knowledge, a character's state, or the stakes — compared to before this turn. Use action "none" only when the recent conversation already has real momentum of its own and nothing needs to be inserted this turn — never as a way to play it safe.
+- Estimate timeElapsedHint honestly based on the current scene's context — don't skip time carelessly.${timeSkipGuidance}${forcedNote}
 
-ตอบกลับเป็น JSON เท่านั้น ไม่มีข้อความอื่นก่อน/หลัง ตามรูปแบบนี้:
+Language: write the "detail" field — and "title", if opening a new thread — in natural, native-sounding Thai (not a translation). Everything else in this prompt is instructions for you and must not appear in your output.
+
+Reply with JSON only, nothing before or after it, in exactly this shape:
 {
   "action": "open_new" | "advance" | "peak_and_close" | "none"${timeSkipActionLine},
-  "threadIndex": <เลขลำดับเธรดจากลิสต์ด้านบน ถ้า action คือ advance/peak_and_close, ไม่งั้นใส่ null>,
-  "title": "<ชื่อเธรดสั้นๆ ถ้าเปิดใหม่, ไม่งั้น null>",
-  "poolEventId": "<id จากคลังเหตุการณ์ด้านบนถ้าเลือกใช้ตอนเปิดเธรดใหม่, ไม่งั้น null>",
-  "characterName": "<ชื่อตัวละครที่เธรดนี้เน้น ถ้าเป็นแชทกลุ่มให้เลือกจากรายชื่อที่ให้ไว้ ถ้าไม่ใช่แชทกลุ่มใส่ null>",
-  "detail": "<2-4 ประโยค บอกว่าเกิดอะไรขึ้นในฉากนี้ ให้ narrator เอาไปเขียนต่อ>",
-  "emotionalDelta": <ตัวเลข -20 ถึง 40 ที่จะบวกเข้า emotionalCharge ของเธรดนี้>,
-  "timeElapsedHint": "same_day" | "next_day" | "few_days" | "week_plus"${timeSkipFields}${bondFields}${vibeField}${npcFields}${secretsFields}${callbackFields}${arcFields}
+  "threadIndex": <the thread's number from the list above, if action is advance/peak_and_close, otherwise null>,
+  "title": "<short thread title, if opening a new one, otherwise null>",
+  "poolEventId": "<id from the event pool above, if you used one while opening a new thread, otherwise null>",
+  "characterName": "<the character this thread centers on; in a group chat, pick from the given names; otherwise null>",
+  "detail": "<2-4 sentences, in Thai, describing a specific, concrete thing that happens in this scene — not a mood or atmosphere description — for the narrator to continue from>",
+  "emotionalDelta": <number -20 to 40, added to this thread's emotionalCharge>,
+  "timeElapsedHint": "same_day" | "next_day" | "few_days" | "week_plus"${timeSkipFields}${bondFields}${vibeField}${npcFields}${secretsFields}${callbackFields}${arcFields}${diaryFields}
 }`;
 }
 
@@ -936,8 +960,19 @@ function extractJson(raw) {
 }
 
 async function runDirectorDecision(cfg, state, forcedThread) {
-    const prompt = buildDirectorPrompt(cfg, state, forcedThread);
-    const raw = await requestSeparateGeneration(cfg, prompt, cfg.apiMaxTokensDirector || 500);
+    // Pre-roll whether an "advance" turn gets a diary entry BEFORE calling the
+    // API at all — this is the one part of the diary decision that's genuinely
+    // random rather than derived from the action the model picks, and rolling
+    // it up front (instead of after a second, separate diary call) is what
+    // lets the whole turn — decision plus diary — fit in a single request.
+    const diaryAdvanceRoll = cfg.diaryEnabled ? (Math.random() * 100 < (cfg.diaryAdvanceChance ?? 50)) : false;
+    const prompt = buildDirectorPrompt(cfg, state, forcedThread, diaryAdvanceRoll);
+    // When a diary entry might need to come back in this same response, the
+    // token budget has to cover both the decision JSON and a full diary body.
+    const maxTokens = cfg.diaryEnabled
+        ? (cfg.apiMaxTokensDirector || 500) + (cfg.apiMaxTokensDiary || 1800)
+        : (cfg.apiMaxTokensDirector || 500);
+    const raw = await requestSeparateGeneration(cfg, prompt, maxTokens);
     if (!raw) return null;
     const parsed = extractJson(raw);
     if (!parsed || !parsed.action) {
@@ -945,6 +980,10 @@ async function runDirectorDecision(cfg, state, forcedThread) {
         notify("Story Director: คำตอบของ Director ไม่ใช่ JSON ที่ถูกต้อง (ดู console)", true);
         return null;
     }
+    // Stashed (not part of the model's own JSON) so the caller can tell,
+    // without re-deriving it, whether this turn's "advance" case was the one
+    // that rolled in favor of a diary entry.
+    parsed.__diaryAdvanceRoll = diaryAdvanceRoll;
     return parsed;
 }
 
@@ -1202,44 +1241,104 @@ function checkTriggerDue(cfg, state) {
 // Character Diary — long, first-person, tied to whichever thread beat
 // just happened. Written by its own dedicated API call.
 
-function shouldWriteDiaryForBeat(cfg, threadResult) {
-    if (!cfg.diaryEnabled || !threadResult) return false;
-    const status = threadResult.thread.status;
-    if (threadResult.isNew || status === "resolved") return true;
-    return Math.random() * 100 < (cfg.diaryAdvanceChance ?? 50);
+// Picks which thread a manually-forced diary entry should be written about:
+// whichever active thread has the most recent beat.
+function pickThreadForForcedDiary(state) {
+    if (!state.activeThreads.length) return null;
+    return state.activeThreads.slice().sort((a, b) => {
+        const at = new Date(a.beats[a.beats.length - 1]?.time || 0).getTime();
+        const bt = new Date(b.beats[b.beats.length - 1]?.time || 0).getTime();
+        return bt - at;
+    })[0];
+}
+
+async function writeForcedDiaryEntry(cfg, state) {
+    const thread = pickThreadForForcedDiary(state);
+    if (!thread) return null;
+    const lastBeat = thread.beats[thread.beats.length - 1];
+    const pseudoResult = { thread, detail: lastBeat?.summary || thread.originSummary, isNew: false };
+    return writeDiaryForThread(cfg, state, pseudoResult);
+}
+
+// Diary is now decided and (when required) written as part of the single
+// combined Director response — this just assembles the stored diary entry
+// straight from that response's own diary fields. No second API call: if the
+// model didn't include a diary body when one was expected, the turn simply
+// goes without one rather than triggering a follow-up request.
+function finalizeDiaryFromDecision(cfg, state, result, decision) {
+    if (!cfg.diaryEnabled || !result) return null;
+    const expected = result.isNew || result.thread.status === "resolved" || !!decision.__diaryAdvanceRoll;
+    if (!expected) return null;
+    const charName = result.thread.characterName || getCharacterName();
+    if (Array.isArray(cfg.diaryDisabledCharacters) && cfg.diaryDisabledCharacters.includes(charName)) return null;
+    if (!decision.diaryBody) {
+        console.warn("[Story Director] A diary entry was expected this turn but the combined response didn't include one — skipping it rather than making a second API call.");
+        return null;
+    }
+
+    const entry = {
+        id: (crypto.randomUUID ? crypto.randomUUID() : String(Date.now() + Math.random())),
+        dateIso: getInStoryDate(cfg, state),
+        weatherText: decision.diaryWeatherText || "",
+        temperature: typeof decision.diaryTemperature === "number" ? decision.diaryTemperature : null,
+        mood: decision.diaryMood || "",
+        moodColor: getMoodColor(decision.diaryMood),
+        body: decision.diaryBody,
+        threadId: result.thread.id,
+        characterName: charName,
+        read: false,
+        atGlobalIndex: state.globalMsgIndex || 0,
+    };
+
+    state.diaryLog.push(entry);
+    trimDiaryLog(state);
+    result.thread.diaryEntryIds.push(entry.id);
+    const lastBeat = result.thread.beats[result.thread.beats.length - 1];
+    if (lastBeat) lastBeat.diaryWritten = true;
+
+    return entry;
+}
+
+// Shared diary-writing style rules — used both by the standalone forced-diary
+// prompt below and by the diary block folded into the main Director prompt,
+// so the two paths always describe the same format.
+function buildDiarySkillNote() {
+    return `- Write it as a detailed, emotional outpouring — not a short summary of events. Length: 4-8 paragraphs.
+- Focus on inner feelings, internal conflict, and things left unsaid in the actual scene — not just a retelling of what happened.
+- Four special markers are available. Use them only when they genuinely fit the emotion — not mandatory every time, and shouldn't appear too often:
+  - ==text== = a truth the character has just admitted to themselves (the emotional peak of that paragraph); 1-3 uses across the whole entry
+  - ~~text~~ = a thought held back, never said out loud
+  - __text__ = something decided with firm resolve
+  - \`\`text\`\` = words said out loud that didn't match what was actually felt
+- Never break character. No out-of-story commentary of any kind.`;
 }
 
 function buildDiaryPrompt(cfg, threadResult) {
     const { thread, detail } = threadResult;
-    const priorBeats = thread.beats.slice(0, -1).map((b) => b.summary).join(" → ") || "(นี่คือจุดเริ่มต้นของเรื่องนี้)";
+    const priorBeats = thread.beats.slice(0, -1).map((b) => b.summary).join(" → ") || "(this is the start of this thread)";
     const transcript = getRecentChatTranscript(8);
     const charName = threadResult.thread.characterName || getCharacterName();
 
-    return `คุณคือ ${charName} กำลังเขียนไดอารี่ส่วนตัวที่ไม่มีใครอ่าน เกี่ยวกับเรื่องนี้: "${thread.title}"
+    return `You are ${charName}, writing a private diary entry that no one else will ever read, about this thread: "${thread.title}"
 
-ความเป็นมาของเรื่องนี้จนถึงตอนนี้: ${priorBeats}
-สิ่งที่เพิ่งเกิดขึ้น: ${detail}
+How this thread has developed so far: ${priorBeats}
+What just happened: ${detail}
 
-บทสนทนาล่าสุดเพื่อให้บริบทตรงกับความจริง:
-${transcript || "(ไม่มี)"}
+Recent conversation, so the entry stays grounded in what actually happened:
+${transcript || "(none)"}
 
-เขียนบันทึกไดอารี่จากมุมมองบุคคลที่หนึ่งของ ${charName} เอง โดย:
-- เขียนแบบระบายความรู้สึกละเอียด ไม่ใช่สรุปเหตุการณ์สั้นๆ — ความยาว 4-8 ย่อหน้า
-- โฟกัสที่ความรู้สึกภายใน ความขัดแย้งในใจ สิ่งที่พูดไม่ออกตอนอยู่ในฉากจริง ไม่ใช่แค่เล่าว่าเกิดอะไรขึ้น
-- มีเครื่องหมายพิเศษ 4 แบบ ใส่ได้เมื่อเข้ากับอารมณ์จริงๆ ไม่บังคับต้องใช้ทุกแบบทุกครั้ง และไม่ควรถี่เกินไป:
-  - ==ข้อความ== = ความจริงที่ตัวละครเพิ่งยอมรับกับตัวเอง (จุดพีคของย่อหน้านั้น) 1-3 จุดตลอดบันทึก
-  - ~~ข้อความ~~ = ความคิดที่กลั้นไว้ ไม่เคยพูดออกมา
-  - __ข้อความ__ = สิ่งที่ตัดสินใจไว้อย่างแน่วแน่
-  - \`\`ข้อความ\`\` = คำที่พูดออกไปทั้งที่ใจไม่ตรงกับที่พูด
-- ห้ามหลุดจากมุมมองตัวละคร ห้ามมีคำอธิบายนอกเรื่อง
+Write the diary entry in ${charName}'s own first-person voice:
+${buildDiarySkillNote()}
 ${buildGroundingBlock()}
 
-ตอบกลับเป็น JSON เท่านั้น:
+Language: write "mood", "weatherText", and "body" in natural, native-sounding Thai (not a translation). Everything else in this prompt is instructions for you and must not appear in your output.
+
+Reply with JSON only:
 {
-  "mood": "<คำเดียวบอกอารมณ์หลัก เช่น หึงหวง, สับสน, อบอุ่น, โกรธ>",
-  "weatherText": "<สภาพอากาศสั้นๆ เข้ากับอารมณ์ เช่น ฝนตกหนักและลมกระโชกแรง>",
-  "temperature": <ตัวเลของศาเซลเซียส>,
-  "body": "<เนื้อหาไดอารี่ทั้งหมด รวม ==highlight==, ~~strikethrough~~, __underline__, ``facade`` ในนั้น>"
+  "mood": "<a single word for the dominant emotion, in Thai, e.g. หึงหวง, สับสน, อบอุ่น, โกรธ>",
+  "weatherText": "<a short weather description matching the mood, in Thai, e.g. ฝนตกหนักและลมกระโชกแรง>",
+  "temperature": <number, degrees Celsius>,
+  "body": "<the full diary entry, in Thai, including any ==highlight==, ~~strikethrough~~, __underline__, \`\`facade\`\` markers within it>"
 }`;
 }
 
@@ -1503,6 +1602,19 @@ async function onCharacterMessageReceived(mesId) {
 
         if (!cfg.apiProfileId) { saveChatState(); return; }
 
+        if (state.forceNextDiary) {
+            state.forceNextDiary = false;
+            const entry = await writeForcedDiaryEntry(cfg, state);
+            if (entry) {
+                if (cfg.diaryBannerEnabled) showDiaryNotificationBanner(cfg, entry);
+                saveChatState();
+                refreshOpenPopupPanels(state, cfg);
+            } else {
+                notify("Story Director: เขียนไดอารี่ไม่สำเร็จ ดู console (F12)", true);
+                saveChatState();
+            }
+        }
+
         state.messagesSinceCheck = (state.messagesSinceCheck || 0) + 1;
         state.globalMsgIndex = (state.globalMsgIndex || 0) + 1;
         const dueFollowUp = getDueFollowUpThread(state);
@@ -1564,10 +1676,8 @@ async function onCharacterMessageReceived(mesId) {
         if (cfg.soundEnabled) playEventSound(cfg.soundStyle, cfg.customSounds);
         notify(`Story Director: ${truncateText(result.detail, 70)}`);
 
-        if (shouldWriteDiaryForBeat(cfg, result)) {
-            const entry = await writeDiaryForThread(cfg, state, result);
-            if (entry && cfg.diaryBannerEnabled) showDiaryNotificationBanner(cfg, entry);
-        }
+        const diaryEntry = finalizeDiaryFromDecision(cfg, state, result, decision);
+        if (diaryEntry && cfg.diaryBannerEnabled) showDiaryNotificationBanner(cfg, diaryEntry);
 
         saveChatState();
         refreshOpenPopupPanels(state, cfg);
@@ -2321,6 +2431,11 @@ function buildPopupHtml(cfg, state) {
         </div>
 
         <div class="sd-tab-panel sd-hidden" data-tab-panel="diary">
+            <div class="sd-row">
+                <button type="button" class="menu_button" id="sd-force-diary-btn">เขียนไดอารี่ทันทีในข้อความถัดไป</button>
+            </div>
+            <div class="sd-help">บังคับให้เขียนไดอารี่ 1 ฉบับทันทีหลังข้อความถัดไปของตัวละคร โดยอิงจากเธรดที่ขยับล่าสุด โดยไม่ต้องรอโอกาสสุ่มตามปกติ กดแล้วมีผลทันที ไม่ต้องกดบันทึกก่อน (ต้องมีอย่างน้อย 1 เธรดที่เคยเปิดในแชทนี้)</div>
+
             <div class="sd-row"><label><input type="checkbox" id="sd-diary-enabled" ${cfg.diaryEnabled ? "checked" : ""}/> เปิดใช้สมุดไดอารี่</label></div>
             <div class="sd-help">เมื่อเปิดใช้งาน ตัวละครจะเขียนบันทึกไดอารี่ส่วนตัวเป็นระยะๆ ตามความคืบหน้าของเนื้อเรื่อง สามารถอ่านได้จากรายการด้านล่าง</div>
 
@@ -2568,28 +2683,28 @@ function wireLiveCapture(draft) {
 // -----------------------------------------------------------------------
 function buildGuideBodyHtml() {
     return `
-        <h2>บทเรียนที่ 1 — ต่อสาย Director ให้ทำงานค่ะ</h2>
-        <p>ทำตามขั้นตอนนี้ได้เลยค่ะ</p>
+        <h2>บทเรียนที่ 1 — ต่อสาย Director ให้ทำงาน</h2>
+        <p>ขั้นตอนนี้จำเป็นต้องทำก่อนค่ะ ไม่งั้น Director จะยังไม่ทำงาน</p>
         <ol>
-            <li>แตะแท็บ <b>ทั่วไป</b> ด้านบนค่ะ</li>
-            <li>เลื่อนหาหัวข้อ "API สำหรับ Director" แล้วแตะช่อง <b>โปรไฟล์ API</b> เลือก Connection Profile ที่ตั้งค่าไว้แล้วในเมนู API ของ SillyTavern ค่ะ</li>
-            <li>แตะปุ่ม <b>ทดสอบ</b> รอสักครู่ ถ้าขึ้นว่า "เชื่อมต่อสำเร็จ" แปลว่าใช้ได้แล้วค่ะ</li>
-            <li>แตะปุ่ม <b>บันทึก</b> ที่ด้านล่างของป็อปอัพค่ะ</li>
+            <li>แตะแท็บ <b>ทั่วไป</b> ด้านบน</li>
+            <li>เลื่อนหาหัวข้อ "API สำหรับ Director" แตะช่อง <b>โปรไฟล์ API</b> แล้วเลือก Connection Profile ที่ตั้งค่าไว้แล้วในเมนู API ของ SillyTavern</li>
+            <li>แตะปุ่ม <b>ทดสอบ</b> รอสักครู่ ถ้าขึ้นว่า "เชื่อมต่อสำเร็จ" ก็ใช้ได้แล้ว</li>
+            <li>แตะปุ่ม <b>บันทึก</b> ที่ด้านล่างของป็อปอัพ</li>
         </ol>
-        <p>เพียงเท่านี้ก็เรียบร้อยค่ะ ตั้งแต่ข้อความถัดไปที่ตัวละครพิมพ์ตอบในแชท Director จะเริ่มตัดสินใจอยู่เบื้องหลังให้เองโดยอัตโนมัติ ไม่ต้องกดอะไรเพิ่มอีกค่ะ</p>
+        <p>เท่านี้ก็เรียบร้อยแล้วค่ะ ตั้งแต่ข้อความถัดไปที่ตัวละครพิมพ์ตอบในแชท Director จะเริ่มตัดสินใจอยู่เบื้องหลังให้เองโดยอัตโนมัติ ไม่ต้องกดอะไรเพิ่ม</p>
 
-        <h2>บทเรียนที่ 2 — อยากลองดูของจริงไหมคะ</h2>
-        <p>บทนี้ไม่บังคับค่ะ แค่เป็นแนวทางเผื่ออยากเห็นผลเร็วๆ โดยไม่ต้องรอ</p>
-        <p>ปกติแล้ว Director จะพิจารณาตัดสินใจเองอยู่แล้วตามจังหวะที่ตั้งไว้ แต่ถ้าอยากให้ตัดสินใจในข้อความถัดไปเลย มีปุ่ม <b>เร่งให้ Director ตัดสินใจในข้อความถัดไป</b> อยู่ในแท็บทั่วไปค่ะ กดแล้วลองกลับไปคุยกับตัวละครดูสัก 1 ข้อความ เดี๋ยวจะมีผลลัพธ์ให้เห็นในไม่ช้า</p>
-        <p>ผลลัพธ์นั้นไปดูได้จากหลายที่นะคะ ลองแวะไปที่แท็บ <b>เธรด</b> กับแท็บ <b>ไดอารี่</b> ดูค่ะ น่าจะเห็นอะไรใหม่ๆ โผล่ขึ้นมาให้ทำความรู้จัก</p>
+        <h2>บทเรียนที่ 2 — อยากลองดูของจริงไหม</h2>
+        <p>บทนี้ไม่บังคับนะคะ เป็นแค่แนวทางเผื่ออยากเห็นผลเร็วๆ โดยไม่ต้องรอ</p>
+        <p>ปกติ Director จะพิจารณาตัดสินใจเองตามจังหวะที่ตั้งไว้อยู่แล้ว แต่ถ้าอยากให้ตัดสินใจในข้อความถัดไปเลย ในแท็บทั่วไปมีปุ่ม <b>เร่งให้ Director ตัดสินใจในข้อความถัดไป</b> อยู่ กดแล้วลองกลับไปคุยกับตัวละครสัก 1 ข้อความ ผลลัพธ์จะตามมาไม่ช้า</p>
+        <p>ลองแวะไปดูที่แท็บ <b>เธรด</b> กับแท็บ <b>ไดอารี่</b> ด้วยค่ะ น่าจะมีอะไรใหม่ๆ โผล่ขึ้นมาให้ทำความรู้จัก</p>
 
-        <h2>บทเรียนที่ 3 — ปรับสไตล์เรื่องให้เป็นแบบที่ชอบค่ะ</h2>
-        <p>ในแท็บ <b>ตั้งค่า</b> มีหลายจุดที่ช่วยให้เรื่องออกมาตรงกับสไตล์ที่ชอบมากขึ้น เช่น เลือกธีมที่อยากให้เนื้อเรื่องไปทาง ปรับบุคลิกของ Director หรือปรับความถี่ให้เหตุการณ์เกิดถี่หรือห่างกว่าเดิม รายละเอียดของแต่ละช่องมีคำอธิบายกำกับอยู่ในหน้านั้นแล้วค่ะ ลองเข้าไปไล่ดูและปรับเล่นได้เลย ไม่มีค่าไหนที่ผิดหรือถูกตายตัว ขึ้นอยู่กับว่าอยากให้เรื่องออกมาแบบไหนมากกว่าค่ะ</p>
-        <p>ปรับเสร็จแล้วอย่าลืมกด <b>บันทึก</b> แล้วลองคุยต่อดูสักพัก จะได้เห็นว่าโทนเรื่องเปลี่ยนไปตามที่ตั้งใจไว้ไหมนะคะ</p>
+        <h2>บทเรียนที่ 3 — ปรับสไตล์เรื่องให้เป็นแบบที่ชอบ</h2>
+        <p>ในแท็บ <b>ตั้งค่า</b> มีหลายจุดที่ช่วยให้เรื่องออกมาตรงกับสไตล์ที่ชอบมากขึ้น เช่น เลือกธีมที่อยากให้เนื้อเรื่องไปทาง ปรับบุคลิกของ Director หรือปรับความถี่ให้เหตุการณ์เกิดถี่หรือห่างกว่าเดิม แต่ละช่องมีคำอธิบายกำกับอยู่ในหน้านั้นอยู่แล้ว ลองเข้าไปไล่ดูและปรับเล่นได้เลยค่ะ ไม่มีค่าไหนผิดหรือถูกตายตัว ขึ้นอยู่กับว่าอยากให้เรื่องออกมาแบบไหนมากกว่า</p>
+        <p>ปรับเสร็จแล้วอย่าลืมกด <b>บันทึก</b> แล้วลองคุยต่อดูสักพัก จะได้เห็นว่าโทนเรื่องเปลี่ยนไปตามที่ตั้งใจไว้หรือเปล่า</p>
 
-        <h2>บทเรียนที่ 4 — เมื่อพร้อมแล้ว ลองสำรวจของเล่นขั้นสูงดูค่ะ</h2>
-        <p>นอกจากส่วนพื้นฐานแล้ว ในแท็บ <b>ตั้งค่า</b> ยังมีฟีเจอร์ที่ลึกขึ้นอีกหลายอย่าง เช่น ความลับของตัวละคร (Secrets), Callback อดีต, โครงเรื่องระยะยาวแบบซีซั่น (Story Arcs) และเหตุการณ์ที่มี NPC เกี่ยวข้อง ทุกอันมีคำอธิบายว่าใช้งานยังไงอยู่ในหน้านั้นเรียบร้อยแล้วค่ะ ไม่ต้องรีบเปิดทุกอย่างพร้อมกันก็ได้</p>
-        <p>ฟีเจอร์กลุ่มนี้ส่วนใหญ่ทำงานคล้ายกันคือ "ตั้งไว้แล้วปล่อยให้ Director หยิบไปใช้เองตามจังหวะที่เหมาะสม" ไม่ได้เกิดผลทันทีที่เปิด ลองเลือกเปิดสักหนึ่งหรือสองอย่างที่สนใจก่อนก็ได้ค่ะ แล้วค่อยๆ เพิ่มทีหลังเมื่อคุ้นเคยมากขึ้น</p>
+        <h2>บทเรียนที่ 4 — เมื่อพร้อมแล้ว ลองสำรวจของเล่นขั้นสูงดู</h2>
+        <p>นอกจากส่วนพื้นฐานแล้ว ในแท็บ <b>ตั้งค่า</b> ยังมีฟีเจอร์ที่ลึกขึ้นอีกหลายอย่าง เช่น ความลับของตัวละคร (Secrets), Callback อดีต, โครงเรื่องระยะยาวแบบซีซั่น (Story Arcs) และเหตุการณ์ที่มี NPC เกี่ยวข้อง แต่ละอันมีคำอธิบายว่าใช้งานยังไงอยู่ในหน้านั้นเรียบร้อยแล้ว ไม่ต้องรีบเปิดทุกอย่างพร้อมกันก็ได้ค่ะ</p>
+        <p>ฟีเจอร์กลุ่มนี้ส่วนใหญ่ทำงานคล้ายกัน คือตั้งไว้แล้วปล่อยให้ Director หยิบไปใช้เองตามจังหวะที่เหมาะสม ไม่ได้เห็นผลทันทีที่เปิด ลองเลือกเปิดสักหนึ่งหรือสองอย่างที่สนใจก่อนก็พอ แล้วค่อยๆ เพิ่มทีหลังเมื่อคุ้นเคยมากขึ้น</p>
 
         <h2>แผนที่ฟีเจอร์ — อยู่แท็บไหนบ้าง</h2>
         <ul>
@@ -2601,13 +2716,13 @@ function buildGuideBodyHtml() {
         </ul>
 
         <h2>ถาม-ตอบที่พบบ่อย</h2>
-        <p><b>ถาม: Director ไม่ทำงานเลย ทำอย่างไรดีคะ</b><br/>ตอบ: ลองเช็คดูนะคะ ว่าติ๊ก "เปิดใช้งานกับแชทนี้" ในแท็บทั่วไปแล้ว เลือกโปรไฟล์ API แล้ว กด "ทดสอบ" ผ่านแล้ว และกด "บันทึก" แล้วค่ะ</p>
-        <p><b>ถาม: อยากให้เกิดเหตุการณ์เดี๋ยวนี้เลย ทำอย่างไรคะ</b><br/>ตอบ: กดปุ่ม "เร่งให้ Director ตัดสินใจในข้อความถัดไป" ในแท็บทั่วไปได้เลยค่ะ</p>
-        <p><b>ถาม: ทำไมไดอารี่ไม่ถูกเขียนคะ</b><br/>ตอบ: เช็คดูนะคะว่า "เปิดใช้สมุดไดอารี่" ติ๊กอยู่ในแท็บไดอารี่ และตัวละครนั้นไม่ได้ถูกปิดไว้เป็นรายตัว (ในแชทกลุ่ม)</p>
-        <p><b>ถาม: ทำไมเสียงแจ้งเตือนไม่ดังคะ</b><br/>ตอบ: เช็คดูว่าติ๊ก "เล่นเสียงสั้นๆ" ในแท็บทั่วไปแล้วหรือยังนะคะ แล้วลองกด "ลองฟังเสียง" ดูว่าเบราว์เซอร์บล็อกเสียงอัตโนมัติอยู่หรือเปล่า</p>
-        <p><b>ถาม: เปิด Secrets/Story Arcs/Callback ไว้แล้ว ทำไมยังไม่เกิดสักทีคะ</b><br/>ตอบ: ฟีเจอร์เหล่านี้ขึ้นอยู่กับจังหวะที่ Director เห็นว่าเหมาะสมค่ะ ไม่ได้เกิดขึ้นทันทีที่เปิดใช้งาน ต้องรอ Director ตัดสินใจตามความถี่ที่ตั้งไว้ก่อนนะคะ</p>
-        <p><b>ถาม: อยากรู้ว่า Director จะได้รับข้อความอะไรบ้าง ดูได้ไหมคะ</b><br/>ตอบ: เปิด "Prompt Preview" ในแท็บตั้งค่าได้เลยค่ะ ดูตัวอย่างได้โดยไม่เสีย API</p>
-        <p style="opacity:0.7; font-size:0.9em;">รายละเอียดเพิ่มเติมของแต่ละฟีเจอร์ ดูได้ใน README.md ค่ะ</p>
+        <p><b>ถาม: Director ไม่ทำงานเลย ทำอย่างไรดี</b><br/>ตอบ: ลองเช็คดูว่าติ๊ก "เปิดใช้งานกับแชทนี้" ในแท็บทั่วไปแล้ว เลือกโปรไฟล์ API แล้ว กด "ทดสอบ" ผ่านแล้ว และกด "บันทึก" แล้วหรือยังค่ะ</p>
+        <p><b>ถาม: อยากให้เกิดเหตุการณ์เดี๋ยวนี้เลย ทำอย่างไร</b><br/>ตอบ: กดปุ่ม "เร่งให้ Director ตัดสินใจในข้อความถัดไป" ในแท็บทั่วไปได้เลยค่ะ</p>
+        <p><b>ถาม: ทำไมไดอารี่ไม่ถูกเขียน</b><br/>ตอบ: เช็คดูว่า "เปิดใช้สมุดไดอารี่" ติ๊กอยู่ในแท็บไดอารี่หรือเปล่า และตัวละครนั้นไม่ได้ถูกปิดไว้เป็นรายตัว (ในแชทกลุ่ม)</p>
+        <p><b>ถาม: ทำไมเสียงแจ้งเตือนไม่ดัง</b><br/>ตอบ: เช็คว่าติ๊ก "เล่นเสียงสั้นๆ" ในแท็บทั่วไปแล้วหรือยัง แล้วลองกด "ลองฟังเสียง" ดูว่าเบราว์เซอร์บล็อกเสียงอัตโนมัติอยู่หรือเปล่าค่ะ</p>
+        <p><b>ถาม: เปิด Secrets/Story Arcs/Callback ไว้แล้ว ทำไมยังไม่เกิดสักที</b><br/>ตอบ: ฟีเจอร์เหล่านี้ขึ้นอยู่กับจังหวะที่ Director เห็นว่าเหมาะสม ไม่ได้เกิดขึ้นทันทีที่เปิดใช้งาน ต้องรอ Director ตัดสินใจตามความถี่ที่ตั้งไว้ก่อนค่ะ</p>
+        <p><b>ถาม: อยากรู้ว่า Director จะได้รับข้อความอะไรบ้าง ดูได้ไหม</b><br/>ตอบ: เปิด "Prompt Preview" ในแท็บตั้งค่าได้เลย ดูตัวอย่างได้โดยไม่เสีย API</p>
+        <p style="opacity:0.7; font-size:0.9em;">รายละเอียดเพิ่มเติมของแต่ละฟีเจอร์ ดูได้ใน README.md</p>
     `;
 }
 
@@ -2720,7 +2835,7 @@ function toggleGuideOverlay() {
 
 function wireQuickActions(cfg, draft, state) {
     const handler = (e) => {
-        const target = e.target.closest ? e.target.closest("#sd-force-btn, #sd-sound-test-btn, #sd-api-test-btn, #sd-clear-log-btn, #sd-preview-director-btn, #sd-guide-btn") : null;
+        const target = e.target.closest ? e.target.closest("#sd-force-btn, #sd-force-diary-btn, #sd-sound-test-btn, #sd-api-test-btn, #sd-clear-log-btn, #sd-preview-director-btn, #sd-guide-btn") : null;
         if (!target) return;
 
         if (target.id === "sd-guide-btn") {
@@ -2731,6 +2846,14 @@ function wireQuickActions(cfg, draft, state) {
             state.forceNextCheck = true;
             saveChatState();
             notify("ตั้งค่าแล้ว: Director จะตัดสินใจทันทีหลังข้อความถัดไปของตัวละคร");
+        } else if (target.id === "sd-force-diary-btn") {
+            if (!state.activeThreads.length) {
+                notify("ยังไม่มีเธรดที่เปิดอยู่ในแชทนี้ ให้ Director สร้างสถานการณ์อย่างน้อย 1 ครั้งก่อนแล้วค่อยลองใหม่", true);
+            } else {
+                state.forceNextDiary = true;
+                saveChatState();
+                notify("ตั้งค่าแล้ว: จะเขียนไดอารี่ทันทีหลังข้อความถัดไปของตัวละคร");
+            }
         } else if (target.id === "sd-sound-test-btn") {
             playEventSound(draft.soundStyle, draft.customSounds);
         } else if (target.id === "sd-api-test-btn") {
